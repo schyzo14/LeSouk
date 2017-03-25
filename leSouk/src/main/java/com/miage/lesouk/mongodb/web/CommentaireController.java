@@ -21,11 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/lesouk/commentaires")
 public class CommentaireController {
     
-/*    @Autowired
+    @Autowired
     private CommentaireRepository repository;
     
+    /**
+     * GET http://localhost:8080/api/lesouk/commentaires
+     * @return 
+     */
     @GetMapping
-    public Iterable<Commentaire> findCommentaires(Pageable pageable) {
+    public Iterable<Commentaire> findCommentaires() {
         return this.repository.findAll();
-    }*/
+    }
 }

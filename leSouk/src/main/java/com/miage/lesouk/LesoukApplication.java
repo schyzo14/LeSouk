@@ -16,21 +16,21 @@ public class LesoukApplication implements CommandLineRunner {
     }
     
     @Autowired
-    private CommentaireRepository repository;
+    private CommentaireRepository commentaireRepository;
 
     @Override
     public void run(String... strings) throws Exception {
         // Initialisation des données de MongoDB --> Commentaires
         System.out.println("[MongoDB] Initialisation des données");
         System.out.println("---- Suppression de tous les commentaires ----");
-        repository.deleteAll();
+        commentaireRepository.deleteAll();
         System.out.println("---- Ajout des commentaires ----");
-        repository.save(new Commentaire(1, 1, "Jolie petit canard !", new Date()));
-     //   repository.save(new Commentaire(1, 2, "Est-ce commestible ?", new Date()));
-     //   repository.save(new Commentaire(2, 1, "Cela se mange-t-il ?", new Date()));
-     //   repository.save(new Commentaire(3, 3, "Trop cher !", new Date()));
+        commentaireRepository.save(new Commentaire(1, 1, "Jolie petit canard !", new Date()));
+     //   commentaireRepository.save(new Commentaire(1, 2, "Est-ce commestible ?", new Date()));
+     //   commentaireRepository.save(new Commentaire(2, 1, "Cela se mange-t-il ?", new Date()));
+     //   commentaireRepository.save(new Commentaire(3, 3, "Trop cher !", new Date()));
         System.out.println("---- Données insérées (FindAll) ----");
-        for (Commentaire commentaire : repository.findAll()) {
+        for (Commentaire commentaire : commentaireRepository.findAll()) {
                 System.out.println("idC : " + commentaire.getIdC() + " - idA : " + commentaire.getIdA() + " - idU : " + commentaire.getIdU() + " - texte : " + commentaire.getTexte() + " - dateCreation : " + commentaire.getDateCreation());
         }
         System.out.println("---- Fin de l'initialisation de MongoDB ----");
