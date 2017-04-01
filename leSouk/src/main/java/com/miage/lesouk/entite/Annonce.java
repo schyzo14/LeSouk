@@ -35,10 +35,10 @@ public class Annonce implements Serializable {
     private String etatA; //à améliorer avec une enum
     
     /** id Createur */
-    private int idUCreateur;
+    private Integer idUCreateur;
     
     /** id Candidat */
-    private int idUCandidat;
+    private Integer idUCandidat;
     
     /** prix Candidat */
     private Long prixCandidat;
@@ -58,7 +58,7 @@ public class Annonce implements Serializable {
      * Récupérer id Annonce
      * @return idA
      */
-    public int getIdA() {
+    public Integer getIdA() {
         return idA;
     }
 
@@ -154,7 +154,7 @@ public class Annonce implements Serializable {
      * Récupérer id créateur Annonce
      * @return idUCreateur
      */
-    public int getIdUCreateur() {
+    public Integer getIdUCreateur() {
         return idUCreateur;
     }
 
@@ -162,7 +162,7 @@ public class Annonce implements Serializable {
      * Saisir id créateur Annonce
      * @param idUCreateur 
      */
-    public void setIdUCreateur(int idUCreateur) {
+    public void setIdUCreateur(Integer idUCreateur) {
         this.idUCreateur = idUCreateur;
     }
 
@@ -170,7 +170,7 @@ public class Annonce implements Serializable {
      * Récupérer id candidat Annonce
      * @return idUCandidat
      */
-    public int getIdUCandidat() {
+    public Integer getIdUCandidat() {
         return idUCandidat;
     }
 
@@ -178,7 +178,7 @@ public class Annonce implements Serializable {
      * Saisir id candidat Annonce
      * @param idUCandidat 
      */
-    public void setIdUCandidat(int idUCandidat) {
+    public void setIdUCandidat(Integer idUCandidat) {
         this.idUCandidat = idUCandidat;
     }
 
