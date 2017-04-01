@@ -1,14 +1,23 @@
 package com.miage.lesouk.entite;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Classe Annonce
  */
-public class Annonce {
+@Entity
+@Table(name="Annonce")
+public class Annonce implements Serializable {
     
     /** id Annonce */
-    private int idA; //auto-généré
+    @Id
+    @GeneratedValue
+    private Integer idA; //auto-généré
     
     /** titre Annonce */
     private String nomA;
@@ -57,7 +66,7 @@ public class Annonce {
      * Saisir id Annonce
      * @param idA 
      */
-    public void setIdA(int idA) {
+    public void setIdA(Integer idA) {
         this.idA = idA;
     }
 
