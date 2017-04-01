@@ -13,21 +13,21 @@ public interface AnnonceRepository extends PagingAndSortingRepository<Annonce, I
      * @param idA
      * @return Annonce
      */
-    public Annonce findByIdA(int idA);
+    public Annonce findByIdA(Integer idA);
     
     /**
      * Chercher les annonces d'une personne
      * @param idUCreateur
      * @return List Annonce
      */
-    public List<Annonce> findByIdUCreateur(int idUCreateur);
+    public List<Annonce> findByIdUCreateur(Integer idUCreateur);
     
     /**
      * Chercher les annonces d'un candidat
      * @param idUCandidat
      * @return List Annonce
      */
-    public List<Annonce> findByIdUCandidat(int idUCandidat);
+    public List<Annonce> findByIdUCandidat(Integer idUCandidat);
     
     /**
      * Chercher les annonces par mot-clé
