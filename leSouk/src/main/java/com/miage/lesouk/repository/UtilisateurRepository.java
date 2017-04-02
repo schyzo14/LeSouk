@@ -14,4 +14,33 @@ public interface UtilisateurRepository extends PagingAndSortingRepository<Utilis
          * @return      liste de tous utilisateurs
          */
         public Iterable<Utilisateur> findAll();
+        
+        /**
+         * Chercher un utilisateur par son id
+         * @param idU
+         * @return Utilisateur
+         */
+        public Utilisateur findByIdU(Integer idU);
+        
+        /**
+         * Chercher un utilisateur par son pseudo
+         * @param pseudo
+         * @return Utilisateur
+         */
+        public Utilisateur findByPseudo(String pseudo);
+        
+        /**
+         * Chercher un utilisateur par son pseudo et son mdp
+         * @param pseudo
+         * @param mdp
+         * @return Utilisateur
+         */
+        public Utilisateur findByPseudoEtMdp(String pseudo, String mdp);
+        
+        /**
+         * Chercher un utilisateur par son mail
+         * @param mail
+         * @return Utilisateur
+         */
+        public Utilisateur findByMail(String mail);
 }
