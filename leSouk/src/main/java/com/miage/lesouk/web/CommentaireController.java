@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.miage.lesouk.web;
 
 import com.miage.lesouk.entite.Commentaire;
@@ -32,8 +27,17 @@ public class CommentaireController {
      * GET http://localhost:8080/api/lesouk/commentaires
      * @return      liste de commentaires
      */
+    @GetMapping
+    public Iterable<Commentaire> findCommentaires() {
+        return this.repository.findAll();
+    }
+    
+    /**
+     * GET http://localhost:8080/api/lesouk/commentaires/comm/{idA}
+     * @return      liste de commentaires d'un article
+     */
     @GetMapping("comm/{idA}")
-    public Iterable<Commentaire> getTest1(@PathVariable int idA){
+    public Iterable<Commentaire> findByIdA(@PathVariable int idA){
         return this.repository.findByIdA(idA);
     }
 }

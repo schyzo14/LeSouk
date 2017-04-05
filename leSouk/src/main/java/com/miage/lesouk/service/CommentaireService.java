@@ -2,10 +2,9 @@ package com.miage.lesouk.service;
 
 import com.miage.lesouk.entite.Commentaire;
 import java.util.Date;
-import java.util.List;
 
 /**
- * 
+ * Service de Commentaire
  * @author Youssef DARRAB - Manon FABAREZ - Aurore QUEILLE
  */
 public interface CommentaireService {

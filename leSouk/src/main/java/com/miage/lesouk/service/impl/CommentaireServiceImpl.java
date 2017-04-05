@@ -4,15 +4,15 @@ import com.miage.lesouk.entite.Commentaire;
 import com.miage.lesouk.repository.CommentaireRepository;
 import com.miage.lesouk.service.CommentaireService;
 import java.util.Date;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- *
+ * Implémentation du Service de Commentaire
  * @author Youssef DARRAB - Manon FABAREZ - Aurore QUEILLE
  */
 public class CommentaireServiceImpl implements CommentaireService{
 
+    // Repository d'un commentaire
     @Autowired
     private CommentaireRepository commentaireRepository;
     
