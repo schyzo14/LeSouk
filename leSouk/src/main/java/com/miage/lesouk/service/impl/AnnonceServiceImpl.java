@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class AnnonceServiceImpl implements AnnonceService {
     
-    @Autowired
-    private AnnonceRepository annonceRepository;
+/*    @Autowired
+    private AnnonceRepository annonceRepository;*/
     
     /*
     @Autowired

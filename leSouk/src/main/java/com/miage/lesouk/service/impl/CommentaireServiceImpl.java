@@ -4,6 +4,7 @@ import com.miage.lesouk.entite.Commentaire;
 import com.miage.lesouk.repository.CommentaireRepository;
 import com.miage.lesouk.service.CommentaireService;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -28,6 +29,16 @@ public class CommentaireServiceImpl implements CommentaireService{
         Commentaire commentaire = new Commentaire(idA, idU, texte, date);
         commentaireRepository.save(commentaire);
         return commentaire;
+    }
+
+    /**
+     * Retourne les commentaires d'une annonce
+     * @param idA       id de l'annonce
+     * @return          liste d'annonce
+     */
+    @Override
+    public Iterable<Commentaire> getCommentairesByIdA(Integer idA) {
+        return commentaireRepository.findByIdA(idA);
     }
     
 }

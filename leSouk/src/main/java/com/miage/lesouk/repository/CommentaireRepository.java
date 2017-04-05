@@ -9,9 +9,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 public interface CommentaireRepository extends PagingAndSortingRepository<Commentaire, Long>{
     
-    /**
-     * Recupérer tous les commentaires
-     * @return      liste de commentaires
-     */
-    public Iterable<Commentaire> findAll();
+    public Iterable<Commentaire> findByIdA(int idA);
 }

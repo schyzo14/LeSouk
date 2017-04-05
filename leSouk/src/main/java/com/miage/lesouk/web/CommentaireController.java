@@ -1,9 +1,15 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.miage.lesouk.web;
 
-import com.miage.lesouk.repository.CommentaireRepository;
 import com.miage.lesouk.entite.Commentaire;
+import com.miage.lesouk.repository.CommentaireRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,8 +32,8 @@ public class CommentaireController {
      * GET http://localhost:8080/api/lesouk/commentaires
      * @return      liste de commentaires
      */
-    @GetMapping
-    public Iterable<Commentaire> findCommentaires() {
-        return this.repository.findAll();
+    @GetMapping("comm/{idA}")
+    public Iterable<Commentaire> getTest1(@PathVariable int idA){
+        return this.repository.findByIdA(idA);
     }
 }

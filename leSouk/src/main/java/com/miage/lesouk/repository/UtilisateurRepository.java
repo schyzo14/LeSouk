@@ -20,7 +20,7 @@ public interface UtilisateurRepository extends PagingAndSortingRepository<Utilis
          * @param idU
          * @return Utilisateur
          */
-        public Utilisateur findByIdU(Integer idU);
+        public Utilisateur findById(Integer idU);
         
         /**
          * Chercher un utilisateur par son pseudo
@@ -35,7 +35,7 @@ public interface UtilisateurRepository extends PagingAndSortingRepository<Utilis
          * @param mdp
          * @return Utilisateur
          */
-        public Utilisateur findByPseudoEtMdp(String pseudo, String mdp);
+        public Utilisateur findByPseudoAndMdp(String pseudo, String mdp);
         
         /**
          * Chercher un utilisateur par son mail

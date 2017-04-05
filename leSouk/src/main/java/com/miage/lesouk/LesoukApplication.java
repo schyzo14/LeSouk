@@ -1,7 +1,9 @@
 package com.miage.lesouk;
 
+import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Commentaire;
 import com.miage.lesouk.entite.Utilisateur;
+import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.repository.CommentaireRepository;
 import com.miage.lesouk.repository.UtilisateurRepository;
 import java.util.Date;
@@ -26,6 +28,9 @@ public class LesoukApplication implements CommandLineRunner {
     
     @Autowired
     private UtilisateurRepository utilisateurRepository;
+    
+    @Autowired
+    private AnnonceRepository annonceRepository;
 
     @Override
     public void run(String... strings) throws Exception {
@@ -57,5 +62,19 @@ public class LesoukApplication implements CommandLineRunner {
                 System.out.println("id : " + utilisateur.getId() + " - Nom : " + utilisateur.getNom() + " - Prenom : " + utilisateur.getPrenom() + " - Mail : "+ utilisateur.getMail() + " - Pseudo : " + utilisateur.getPseudo() + " -  Mdp : " + utilisateur.getMdp() + " - id de localisation : "+utilisateur.getIdL());
         }
         System.out.println("---- Fin de l'initialisation de Utilisateurs ----");
+        
+        // Initialisation des données de Annonces
+        System.out.println("[JavaDB] Initialisation des Annonces");
+        System.out.println("---- Suppression de tous les annonces ----");
+        annonceRepository.deleteAll();
+        System.out.println("---- Ajout des annonces ----");
+        annonceRepository.save(new Annonce("TV 4K", "Neuve, 4K", (long) 450.00, 1));
+        annonceRepository.save(new Annonce("Canard de bain", "Jaune, flotte", (long) 3.00, 2));
+        System.out.println("---- Données insérées (FindAll) ----");
+        for (Annonce annonce : annonceRepository.findAll()) {
+                System.out.println("id : " + annonce.getIdA() + " - Nom : " + annonce.getNomA() + " - description : " + annonce.getDescriptionA() + " - prix : " + annonce.getPrixA() + " - Id créateur : " + annonce.getIdUCreateur());
+        }
+        System.out.println("---- Fin de l'initialisation de Annonces ----");
+
     }
 }

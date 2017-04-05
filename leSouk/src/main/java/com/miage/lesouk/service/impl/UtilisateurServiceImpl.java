@@ -21,11 +21,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService{
 
-    @Autowired
+/*    @Autowired
     private AnnonceRepository annonceRepository;
     
     @Autowired
-    private UtilisateurRepository utilisateurRepository;
+    private UtilisateurRepository utilisateurRepository;*/
     
     @Override
     public Utilisateur getUtilisateur(Integer idU) {

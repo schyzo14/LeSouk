@@ -2,6 +2,7 @@ package com.miage.lesouk.service;
 
 import com.miage.lesouk.entite.Commentaire;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -18,4 +19,11 @@ public interface CommentaireService {
      * @return          le commentaire créé
      */
     public Commentaire createCommentaire(int idU, int idA, String texte, Date date);
+
+    /**
+     * Retourne les commentaires d'une annonce
+     * @param idA       id de l'annonce
+     * @return          liste d'annonce
+     */
+    public Iterable<Commentaire> getCommentairesByIdA (Integer idA);
 }
