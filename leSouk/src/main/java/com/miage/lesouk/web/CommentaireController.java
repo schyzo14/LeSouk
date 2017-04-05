@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Controller de Commentaire
+ * 
+ * ---------------------- A supprimer ----------------------------
+ * 
  * @author Youssef DARRAB - Manon FABAREZ - Aurore QUEILLE
  */
 @RestController
