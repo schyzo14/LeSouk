@@ -27,8 +27,11 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     private String pseudo;
     // Mot de passe de l'utilisateur
     private String mdp;
-    // Id de localisation
-    private Integer idL;
+    // Ville
+    private String ville;
+    // Pays
+    private String pays;
+   
 
     /**
      * Constructeur par défaut
@@ -43,16 +46,18 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
      * @param mail      Mail de l'utilisateur
      * @param pseudo    Pseudo de l'utilisateur
      * @param mdp       Mot de passe de l'utilisateur
-     * @param idL       Id de localisation
+     * @param ville     Ville de l'utilisateur
+     * @param pays      Pays de l'utilisateur
      */
-    public Utilisateur(String nom, String prenom, String pseudo, String mail, String mdp, Integer idL) {
+    public Utilisateur(String nom, String prenom, String pseudo, String mail, String mdp, String ville, String pays) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.pseudo = pseudo;
         this.mail = mail;
         this.mdp = mdp;
-        this.idL = idL;
+        this.pays = pays;
+        this.ville = ville;
     }
 
     /**
@@ -152,20 +157,34 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     }
 
     /**
-     * Récupérer l'id de localisation
-     * @return idL
+     * Récupérer la ville de localisation
+     * @return ville
      */
-    public Integer getIdL() {
-        return idL;
+    public String getVille() {
+        return ville;
     }
 
     /**
-     * Modifier l'id de localisation
-     * @param idL 
+     * Modifier la ville de localisation
+     * @param ville 
      */
-    public void setIdL(Integer idL) {
-        this.idL = idL;
+    public void setVille(String ville) {
+        this.ville = ville;
     }
     
-    
+    /**
+     * Récupérer le pays de localisation
+     * @return pays
+     */
+    public String getPays() {
+        return pays;
+    }
+
+    /**
+     * Modifier le pays de localisation
+     * @param pays 
+     */
+    public void setPays(String pays) {
+        this.pays = pays;
+    }
 }

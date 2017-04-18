@@ -9,6 +9,7 @@ import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.repository.UtilisateurRepository;
+import com.miage.lesouk.service.AnnonceService;
 import com.miage.lesouk.service.UtilisateurService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,25 +22,25 @@ import org.springframework.stereotype.Service;
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService{
 
-/*    @Autowired
+    @Autowired
     private AnnonceRepository annonceRepository;
     
     @Autowired
-    private UtilisateurRepository utilisateurRepository;*/
+    private UtilisateurRepository utilisateurRepository;
     
     @Override
     public Utilisateur getUtilisateur(Integer idU) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return utilisateurRepository.findById(idU);
     }
 
     @Override
     public List<Annonce> getAnnoncesCreees(Integer idUCreateur) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return annonceRepository.findByIdUCreateur(idUCreateur);
     }
 
     @Override
     public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return annonceRepository.findByIdUCandidat(idUCandidat);
     }
     
 }

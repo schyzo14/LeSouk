@@ -10,5 +10,6 @@ package com.miage.lesouk.interfacepublic;
  * @author Youssef DARRAB - Manon FABAREZ - Aurore QUEILLE
  */
 public interface UtilisateurPublic {
-    Integer getIdL();
+    String getVille();
+    String getPays();
 }

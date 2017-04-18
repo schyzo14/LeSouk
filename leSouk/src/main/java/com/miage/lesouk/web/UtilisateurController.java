@@ -1,7 +1,10 @@
 package com.miage.lesouk.web;
 
+import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Utilisateur;
+import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.repository.UtilisateurRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +21,11 @@ public class UtilisateurController {
     
     // Repository de Utilisateur
     @Autowired
-    private UtilisateurRepository repository;
+    private UtilisateurRepository utilRepository;
+    
+    //Repository de Annonce
+    @Autowired
+    private AnnonceRepository annonceRepository;
     
     /**
      * GET http://localhost:8080/api/lesouk/utilisateurs
@@ -26,22 +33,22 @@ public class UtilisateurController {
      */
     @GetMapping
     public Iterable<Utilisateur> findUtilisateurs() {
-        return this.repository.findAll();
+        return this.utilRepository.findAll();
     }
     
     @GetMapping("{idU}")
-    public Utilisateur getUtilisateur(@PathVariable Long idU) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Utilisateur getUtilisateur(@PathVariable Integer idU) {
+        return utilRepository.findById(idU);
     }
     
     @GetMapping("{idU}/annoncesCrees")
-    public Utilisateur getAnnoncesCrees(@PathVariable Long idU) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Annonce> getAnnoncesCrees(@PathVariable Integer idU) {
+        return annonceRepository.findByIdUCreateur(idU);
     }
     
     @GetMapping("{idU}/annoncesCandidatees")
-    public Utilisateur getAnnoncesCandidatees(@PathVariable Long idU) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Annonce> getAnnoncesCandidatees(@PathVariable Integer idU) {
+        return annonceRepository.findByIdUCandidat(idU);
     }
     
     
