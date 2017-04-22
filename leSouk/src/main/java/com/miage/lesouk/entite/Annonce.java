@@ -2,10 +2,12 @@ package com.miage.lesouk.entite;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Classe Annonce
@@ -42,6 +44,13 @@ public class Annonce implements Serializable {
     
     /** prix Candidat */
     private Long prixCandidat;
+    
+    /** commentaires */
+    @Transient
+    private List<Commentaire> listeCommentaires;
+
+    public Annonce() {
+    }
     
     public Annonce(String nomA, String descriptionA, Long prixA, int idUCreateur) {
         this.nomA = nomA;
@@ -196,5 +205,21 @@ public class Annonce implements Serializable {
      */
     public void setPrixCandidat(Long prixCandidat) {
         this.prixCandidat = prixCandidat;
+    }
+
+    /**
+     * Récupérer la liste des commentaires
+     * @return Liste Commentaires
+     */
+    public List<Commentaire> getListeCommentaires() {
+        return listeCommentaires;
+    }
+
+    /**
+     * Saisir une liste de Commentaires
+     * @param listeCommentaires 
+     */
+    public void setListeCommentaires(List<Commentaire> listeCommentaires) {
+        this.listeCommentaires = listeCommentaires;
     }
 }
