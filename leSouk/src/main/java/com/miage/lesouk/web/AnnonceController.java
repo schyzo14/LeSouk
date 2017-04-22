@@ -20,32 +20,33 @@ public class AnnonceController {
     public AnnonceService annonceService;
     
     @GetMapping("{idA}")
-    public Annonce getAnnonce(@PathVariable Long idA) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Annonce getAnnonce(@PathVariable Integer idA) {
+        return annonceService.getAnnonce(idA);
     }
     
-    @GetMapping("{motsCles}")
+    @GetMapping("liste/{motsCles}")
     public List<Annonce> getAnnonces(@PathVariable String motsCles) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return annonceService.getAnnonces(motsCles);
     }
     
     @PostMapping
     public Annonce postAnnonce(@RequestBody Annonce annonce) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return annonceService.creerAnnonce(annonce.getNomA(), annonce.getDescriptionA(), annonce.getPrixA(),
+                annonce.getIdUCreateur());
     }
     
-    @PutMapping("{idA}")
-    public Annonce putAnnonceCandidater(@PathVariable Long idA, @RequestBody Annonce annonce) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @PutMapping("candidater/{idA}")
+    public Annonce putAnnonceCandidater(@PathVariable Integer idA, @RequestBody Annonce annonce) {
+        return annonceService.candidaterAnnonce(idA, annonce.getIdUCandidat(), annonce.getPrixCandidat());
     }
     
-    @PutMapping("{idA}")
-    public Annonce putAnnonceCloturer(@PathVariable Long idA) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @PutMapping("cloturer/{idA}")
+    public Annonce putAnnonceCloturer(@PathVariable Integer idA) {
+        return annonceService.cloturerAnnonce(idA);
     }
     
     @PostMapping("{idA}")
-    public Annonce postCommentaire(@PathVariable Long idA, @RequestBody Commentaire commentaire) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Annonce postCommentaire(@PathVariable Integer idA, @RequestBody Commentaire commentaire) {
+        return annonceService.commenterAnnonce(idA, commentaire.getIdU(), commentaire.getTexte());
     }
 }
