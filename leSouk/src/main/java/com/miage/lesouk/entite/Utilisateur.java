@@ -2,10 +2,11 @@ package com.miage.lesouk.entite;
 
 import com.miage.lesouk.interfacepublic.ParticipantPublic;
 import com.miage.lesouk.interfacepublic.UtilisateurPublic;
-import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * Entité Utilisateur
@@ -31,7 +32,12 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     private String ville;
     // Pays
     private String pays;
-   
+    // Liste Annonces Crées
+    @Transient
+    private List<Annonce> annoncesCreees;
+    // Liste Annonces Candidatées
+    @Transient
+    private List<Annonce> annoncesCandidatees;
 
     /**
      * Constructeur par défaut
@@ -186,5 +192,37 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
      */
     public void setPays(String pays) {
         this.pays = pays;
+    }
+
+    /**
+     * Récupérer la liste des annonces créées
+     * @return annoncesCreees
+     */
+    public List<Annonce> getAnnoncesCreees() {
+        return annoncesCreees;
+    }
+
+    /**
+     * Modifier la liste des annonces créées
+     * @param annoncesCreees 
+     */
+    public void setAnnoncesCreees(List<Annonce> annoncesCreees) {
+        this.annoncesCreees = annoncesCreees;
+    }
+
+    /**
+     * Récupérer la liste des annonces candidatées
+     * @return annoncesCandidatees
+     */
+    public List<Annonce> getAnnoncesCandidatees() {
+        return annoncesCandidatees;
+    }
+
+    /**
+     * Modifier la liste des annonces candidatées
+     * @param annoncesCandidatees 
+     */
+    public void setAnnoncesCandidatees(List<Annonce> annoncesCandidatees) {
+        this.annoncesCandidatees = annoncesCandidatees;
     }
 }
