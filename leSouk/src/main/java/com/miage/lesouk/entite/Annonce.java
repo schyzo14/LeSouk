@@ -3,6 +3,7 @@ package com.miage.lesouk.entite;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -221,5 +222,66 @@ public class Annonce implements Serializable {
      */
     public void setListeCommentaires(List<Commentaire> listeCommentaires) {
         this.listeCommentaires = listeCommentaires;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.idA);
+        hash = 97 * hash + Objects.hashCode(this.nomA);
+        hash = 97 * hash + Objects.hashCode(this.descriptionA);
+        hash = 97 * hash + Objects.hashCode(this.prixA);
+        hash = 97 * hash + Objects.hashCode(this.dateCreaA);
+        hash = 97 * hash + Objects.hashCode(this.etatA);
+        hash = 97 * hash + Objects.hashCode(this.idUCreateur);
+        hash = 97 * hash + Objects.hashCode(this.idUCandidat);
+        hash = 97 * hash + Objects.hashCode(this.prixCandidat);
+        hash = 97 * hash + Objects.hashCode(this.listeCommentaires);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Annonce other = (Annonce) obj;
+        if (!Objects.equals(this.nomA, other.nomA)) {
+            return false;
+        }
+        if (!Objects.equals(this.descriptionA, other.descriptionA)) {
+            return false;
+        }
+        if (!Objects.equals(this.etatA, other.etatA)) {
+            return false;
+        }
+        if (!Objects.equals(this.idA, other.idA)) {
+            return false;
+        }
+        if (!Objects.equals(this.prixA, other.prixA)) {
+            return false;
+        }
+        if (!Objects.equals(this.dateCreaA, other.dateCreaA)) {
+            return false;
+        }
+        if (!Objects.equals(this.idUCreateur, other.idUCreateur)) {
+            return false;
+        }
+        if (!Objects.equals(this.idUCandidat, other.idUCandidat)) {
+            return false;
+        }
+        if (!Objects.equals(this.prixCandidat, other.prixCandidat)) {
+            return false;
+        }
+        if (!Objects.equals(this.listeCommentaires, other.listeCommentaires)) {
+            return false;
+        }
+        return true;
     }
 }
