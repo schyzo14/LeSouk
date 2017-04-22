@@ -30,10 +30,16 @@ public interface AnnonceRepository extends PagingAndSortingRepository<Annonce, I
     public List<Annonce> findByIdUCandidat(Integer idUCandidat);
     
     /**
-     * Chercher les annonces par mot-clé
+     * Chercher les titres d'annonces par mot-clé
      * @param motsCles
      * @return List Annonce
      */
-    public List<Annonce> findByNomAContainingOrDescriptionAContaining
-        (String motsCles);
+    public List<Annonce> findByNomAContaining(String motsCles);
+    
+    /**
+     * Chercher les descriptions d'annonces par mot-clé
+     * @param motsCles
+     * @return List Annonce
+     */
+    public List<Annonce> findByDescriptionAContaining(String motsCles);
 }
