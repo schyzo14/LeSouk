@@ -4,6 +4,7 @@ import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Commentaire;
 import com.miage.lesouk.service.AnnonceService;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,7 @@ public class AnnonceController {
     }
     
     @GetMapping("liste/{motsCles}")
-    public List<Annonce> getAnnonces(@PathVariable String motsCles) {
+    public Set<Annonce> getAnnonces(@PathVariable String motsCles) {
         return annonceService.getAnnonces(motsCles);
     }
     
