@@ -9,6 +9,7 @@ import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.repository.UtilisateurRepository;
+import com.miage.lesouk.service.AnnonceService;
 import com.miage.lesouk.service.UtilisateurService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService{
-
+    
     @Autowired
-    private AnnonceRepository annonceRepository;
+    private AnnonceService annonceService;
     
     @Autowired
     private UtilisateurRepository utilisateurRepository;
@@ -34,12 +35,12 @@ public class UtilisateurServiceImpl implements UtilisateurService{
 
     @Override
     public List<Annonce> getAnnoncesCreees(Integer idUCreateur) {
-        return annonceRepository.findByIdUCreateur(idUCreateur);
+        return annonceService.getAnnoncesCreees(idUCreateur);
     }
 
     @Override
     public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat) {
-        return annonceRepository.findByIdUCandidat(idUCandidat);
+        return annonceService.getAnnoncesCandidatees(idUCandidat);
     }
 
     @Override
