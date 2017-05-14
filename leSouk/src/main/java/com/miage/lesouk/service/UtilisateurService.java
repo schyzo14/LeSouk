@@ -17,4 +17,5 @@ public interface UtilisateurService {
     public Utilisateur getUtilisateur(Integer idU);
     public List<Annonce> getAnnoncesCreees(Integer idUCreateur);
     public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat);
+    public Utilisateur createUtilisateur(Utilisateur u);
 }

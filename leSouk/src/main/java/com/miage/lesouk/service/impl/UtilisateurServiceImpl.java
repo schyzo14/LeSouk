@@ -9,7 +9,6 @@ import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.repository.UtilisateurRepository;
-import com.miage.lesouk.service.AnnonceService;
 import com.miage.lesouk.service.UtilisateurService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +41,9 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat) {
         return annonceRepository.findByIdUCandidat(idUCandidat);
     }
-    
+
+    @Override
+    public Utilisateur createUtilisateur(Utilisateur u) {
+        return utilisateurRepository.save(u);
+    }
 }

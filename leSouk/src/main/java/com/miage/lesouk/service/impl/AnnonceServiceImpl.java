@@ -4,9 +4,9 @@ import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Commentaire;
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.repository.AnnonceRepository;
-import com.miage.lesouk.repository.CommentaireRepository;
-import com.miage.lesouk.repository.UtilisateurRepository;
 import com.miage.lesouk.service.AnnonceService;
+import com.miage.lesouk.service.CommentaireService;
+import com.miage.lesouk.service.UtilisateurService;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,10 +22,10 @@ public class AnnonceServiceImpl implements AnnonceService {
     private AnnonceRepository annonceRepository;
     
     @Autowired
-    private UtilisateurRepository utilisateurRepository;
+    private UtilisateurService utilisateurService;
     
     @Autowired
-    private CommentaireRepository commentaireRepository;
+    private CommentaireService commentaireService;
 
     @Override
     public Annonce getAnnonce(Integer idA) {
@@ -60,7 +60,7 @@ public class AnnonceServiceImpl implements AnnonceService {
     @Override
     public Annonce creerAnnonce(String nomA, String descriptionA, Long prixA, Integer idUCreateur) {
         Annonce annonce = new Annonce(nomA, descriptionA, prixA, idUCreateur);
-        Utilisateur utilisateur = utilisateurRepository.findById(idUCreateur);
+        Utilisateur utilisateur = utilisateurService.getUtilisateur(idUCreateur);
         
         if(utilisateur.getAnnoncesCreees() == null) {
             List<Annonce> annoncesCreees = new ArrayList<Annonce>();
@@ -68,14 +68,14 @@ public class AnnonceServiceImpl implements AnnonceService {
         }
         utilisateur.getAnnoncesCreees().add(annonce);
         
-        utilisateurRepository.save(utilisateur);
+        utilisateurService.createUtilisateur(utilisateur);
         return annonceRepository.save(annonce);
     }
 
     @Override
     public Annonce candidaterAnnonce(Integer idA, Integer idUCandidat, Long prixCandidat) {
         Annonce annonce = annonceRepository.findByIdA(idA);
-        Utilisateur utilisateur = utilisateurRepository.findById(idUCandidat);
+        Utilisateur utilisateur = utilisateurService.getUtilisateur(idUCandidat);
         
         annonce.setIdUCandidat(idUCandidat);
         annonce.setPrixCandidat(prixCandidat);
@@ -87,7 +87,7 @@ public class AnnonceServiceImpl implements AnnonceService {
         }
         utilisateur.getAnnoncesCandidatees().add(annonce);
         
-        utilisateurRepository.save(utilisateur);
+        utilisateurService.createUtilisateur(utilisateur);
         return annonceRepository.save(annonce);
     }
 
@@ -110,7 +110,8 @@ public class AnnonceServiceImpl implements AnnonceService {
         }
         annonce.getListeCommentaires().add(commentaire);
         
-        commentaireRepository.save(commentaire);
+        commentaireService.createCommentaire(commentaire.getIdU(), commentaire.getIdA(), commentaire.getTexte(),
+                commentaire.getDateCreation());
         return annonceRepository.save(annonce);
     }
     
