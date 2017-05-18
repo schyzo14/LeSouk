@@ -35,46 +35,60 @@ public class LesoukApplication implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
         
-        // Initialisation des données de MongoDB --> Commentaires
-        System.out.println("[MongoDB] Initialisation des données");
-        System.out.println("---- Suppression de tous les commentaires ----");
-        commentaireRepository.deleteAll();
-        System.out.println("---- Ajout des commentaires ----");
-        commentaireRepository.save(new Commentaire(1, 1, "Jolie petit canard !", new Date()));
-        commentaireRepository.save(new Commentaire(1, 2, "Est-ce commestible ?", new Date()));
-        commentaireRepository.save(new Commentaire(2, 1, "Cela se mange-t-il ?", new Date()));
-        commentaireRepository.save(new Commentaire(3, 3, "Trop cher !", new Date()));
-        System.out.println("---- Données insérées (FindAll) ----");
-        for (Commentaire commentaire : commentaireRepository.findAll()) {
-                System.out.println("idC : " + commentaire.getIdC() + " - idA : " + commentaire.getIdA() + " - idU : " + commentaire.getIdU() + " - texte : " + commentaire.getTexte() + " - dateCreation : " + commentaire.getDateCreation());
-        }
-        System.out.println("---- Fin de l'initialisation de MongoDB ----");
-        
          // Initialisation des données de Utilisateurs
         System.out.println("[JavaDB] Initialisation des utilisateurs");
         System.out.println("---- Suppression de tous les utilisateurs ----");
         utilisateurRepository.deleteAll();
         System.out.println("---- Ajout des utilisateurs ----");
-        utilisateurRepository.save(new Utilisateur("Nom1", "Prenom1", "unPseudo1", "unmail@bordeaux.fr", "mdpNom1", "bordeaux", "france"));
-        utilisateurRepository.save(new Utilisateur("Nom2", "Prenom2", "unPseudo2", "bordeaux@toulouse.fr", "mdpNom2", "toulouse", "france"));
+        utilisateurRepository.save(new Utilisateur("Fabarez", "Manon", "simplette", "simplette@bordeaux.fr", "s123", "bordeaux", "france"));
+        utilisateurRepository.save(new Utilisateur("Darrab", "Youssef", "dormeur", "dormeur@maroc.fr", "d123", "tournefeuille", "france"));
+        utilisateurRepository.save(new Utilisateur("Queille", "Aurore", "grincheuse", "grincheuse@toulouse.fr", "g123", "toulouse", "france"));
         System.out.println("---- Données insérées (FindAll) ----");
         for (Utilisateur utilisateur : utilisateurRepository.findAll()) {
                 System.out.println("id : " + utilisateur.getId() + " - Nom : " + utilisateur.getNom() + " - Prenom : " + utilisateur.getPrenom() + " - Mail : "+ utilisateur.getMail() + " - Pseudo : " + utilisateur.getPseudo() + " -  Mdp : " + utilisateur.getMdp() + " - ville : "+utilisateur.getVille() + " - pays : "+utilisateur.getPays());
         }
         System.out.println("---- Fin de l'initialisation de Utilisateurs ----");
         
+        
         // Initialisation des données de Annonces
         System.out.println("[JavaDB] Initialisation des Annonces");
         System.out.println("---- Suppression de tous les annonces ----");
         annonceRepository.deleteAll();
         System.out.println("---- Ajout des annonces ----");
-        annonceRepository.save(new Annonce("TV 4K", "Neuve, 4K", (long) 450.00, 1));
-        annonceRepository.save(new Annonce("Canard de bain", "Jaune, flotte", (long) 3.00, 2));
+        annonceRepository.save(new Annonce("TV 4K", "Neuve, 4K", (long) 450.00, 3));
+        annonceRepository.save(new Annonce("Canard de bain", "Jaune, flotte", (long) 3.00, 1));
+        annonceRepository.save(new Annonce("Table + chaises", "Table blanche avec 4 chaises laquees", (long) 100.00, 2));
+        annonceRepository.save(new Annonce("Audi A3", "Audi A 3 - II (2) Sportback 2.0 TDI 140 S Line 7CV", (long) 13900.00, 3));
+        annonceRepository.save(new Annonce("Tableau NY", "Tableau New York, Neuf", (long) 10.00, 1));
+        annonceRepository.save(new Annonce("Hand Spinner", "Hand Spinner, vert, neuf", (long) 6.00, 2));
+        annonceRepository.save(new Annonce("Lego Star Wars", "Lego vaisseau Star wars neuf, avec boite scéllée", (long) 75.00, 3));
+        annonceRepository.save(new Annonce("Livre C++", "Livre usé : Comment réussir son partiel de C++ haut la main !", (long) 10.00, 1));
+        annonceRepository.save(new Annonce("iPhone 6S", "iPhone 6S 64GO pour pièces détachées ou comme boomrang", (long) 500.00, 2));
         System.out.println("---- Données insérées (FindAll) ----");
         for (Annonce annonce : annonceRepository.findAll()) {
                 System.out.println("id : " + annonce.getIdA() + " - Nom : " + annonce.getNomA() + " - description : " + annonce.getDescriptionA() + " - prix : " + annonce.getPrixA() + " - Id créateur : " + annonce.getIdUCreateur());
         }
         System.out.println("---- Fin de l'initialisation de Annonces ----");
+        
+        
+        // Initialisation des données de MongoDB --> Commentaires
+        System.out.println("[MongoDB] Initialisation des données");
+        System.out.println("---- Suppression de tous les commentaires ----");
+        commentaireRepository.deleteAll();
+        System.out.println("---- Ajout des commentaires ----");
+        commentaireRepository.save(new Commentaire(1, 2, "On peut être livré par la poste ?", new Date()));
+        commentaireRepository.save(new Commentaire(1, 3, "On peut le faire, mais je ne rembourse pas les dégats lors de la livraison.", new Date()));
+        commentaireRepository.save(new Commentaire(1, 2, "La télécommande est fournie ?", new Date()));
+        commentaireRepository.save(new Commentaire(2, 2, "Jolie petit canard", new Date()));
+        commentaireRepository.save(new Commentaire(2, 3, "Déjà utilisé je pense...", new Date()));
+        commentaireRepository.save(new Commentaire(3, 1, "Pouvez-vous m'envoyer une photo par mail à 4ever@bordeaux.fr ?", new Date()));
+        commentaireRepository.save(new Commentaire(3, 3, "Les chaises sont de quelle couleur ?", new Date()));
+        commentaireRepository.save(new Commentaire(4, 1, "La carte grise est avec ?", new Date()));
+        System.out.println("---- Données insérées (FindAll) ----");
+        for (Commentaire commentaire : commentaireRepository.findAll()) {
+                System.out.println("idC : " + commentaire.getIdC() + " - idA : " + commentaire.getIdA() + " - idU : " + commentaire.getIdU() + " - texte : " + commentaire.getTexte() + " - dateCreation : " + commentaire.getDateCreation());
+        }
+        System.out.println("---- Fin de l'initialisation de MongoDB ----");
 
     }
 }
