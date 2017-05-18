@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Youssef DARRAB - Manon FABAREZ - Aurore QUEILLE
  */
 @RestController
-@RequestMapping("/api/lesouk/utilisateurs")
+@RequestMapping("/api/utilisateurs")
 public class UtilisateurController {
     
     // Repository de Utilisateur

@@ -17,7 +17,7 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     // Id de l'utilisateur autogénéré
     @Id
     @GeneratedValue
-    private long id;
+    private Integer id;
     // Nom de l'utilisateur
     private String nom;
     // Prénom de l'utilisateur
@@ -70,7 +70,7 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
      * Récupérer id de l'utilisateur
      * @return id
      */
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -78,7 +78,7 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
      * Saisir idUtilisateur
      * @param id 
      */
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

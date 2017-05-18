@@ -7,7 +7,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Repository de Utilisateur
  * @author Youssef DARRAB - Manon FABAREZ - Aurore QUEILLE
  */
-public interface UtilisateurRepository extends PagingAndSortingRepository<Utilisateur, Long> {
+public interface UtilisateurRepository extends PagingAndSortingRepository<Utilisateur, Integer> {
     
         /**
          * Récupère tous les utilisateurs
