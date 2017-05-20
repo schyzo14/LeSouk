@@ -58,7 +58,7 @@ public class AnnonceServiceImpl implements AnnonceService {
     }
 
     @Override
-    public Annonce creerAnnonce(String nomA, String descriptionA, Long prixA, Integer idUCreateur) {
+    public Annonce creerAnnonce(String nomA, String descriptionA, Double prixA, Integer idUCreateur) {
         Annonce annonce = new Annonce(nomA, descriptionA, prixA, idUCreateur);
         Utilisateur utilisateur = utilisateurService.getUtilisateur(idUCreateur);
         
@@ -73,7 +73,7 @@ public class AnnonceServiceImpl implements AnnonceService {
     }
 
     @Override
-    public Annonce candidaterAnnonce(Integer idA, Integer idUCandidat, Long prixCandidat) {
+    public Annonce candidaterAnnonce(Integer idA, Integer idUCandidat, Double prixCandidat) {
         Annonce annonce = annonceRepository.findByIdA(idA);
         Utilisateur utilisateur = utilisateurService.getUtilisateur(idUCandidat);
         

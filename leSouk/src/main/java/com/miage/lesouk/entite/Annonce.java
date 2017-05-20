@@ -32,7 +32,7 @@ public class Annonce implements Serializable {
     private String descriptionA;
     
     /** prix Annonce */
-    private Long prixA;
+    private Double prixA;
     
     /** date creation Annonce */
     @JsonFormat(pattern="dd-MM-yyyy")
@@ -48,7 +48,7 @@ public class Annonce implements Serializable {
     private Integer idUCandidat;
     
     /** prix Candidat */
-    private Long prixCandidat;
+    private Double prixCandidat;
     
     /** date creation Annonce */
     @JsonFormat(pattern="dd-MM-yyyy")
@@ -61,7 +61,7 @@ public class Annonce implements Serializable {
     public Annonce() {
     }
     
-    public Annonce(String nomA, String descriptionA, Long prixA, int idUCreateur) {
+    public Annonce(String nomA, String descriptionA, Double prixA, int idUCreateur) {
         this.nomA = nomA;
         this.descriptionA = descriptionA;
         this.prixA = prixA;
@@ -124,7 +124,7 @@ public class Annonce implements Serializable {
      * Récupérer prix Annonce
      * @return prixA
      */
-    public Long getPrixA() {
+    public Double getPrixA() {
         return prixA;
     }
 
@@ -132,7 +132,7 @@ public class Annonce implements Serializable {
      * Saisir prix Annonce
      * @param prixA 
      */
-    public void setPrixA(Long prixA) {
+    public void setPrixA(Double prixA) {
         this.prixA = prixA;
     }
 
@@ -204,7 +204,7 @@ public class Annonce implements Serializable {
      * Récupérer prix proposé par candidat pour Annonce
      * @return prixCandidat
      */
-    public Long getPrixCandidat() {
+    public Double getPrixCandidat() {
         return prixCandidat;
     }
 
@@ -212,7 +212,7 @@ public class Annonce implements Serializable {
      * Saisir prix proposé par candidat pour Annonce
      * @param prixCandidat 
      */
-    public void setPrixCandidat(Long prixCandidat) {
+    public void setPrixCandidat(Double prixCandidat) {
         this.prixCandidat = prixCandidat;
     }
 
