@@ -78,9 +78,15 @@ public class LesoukApplication implements CommandLineRunner {
         annonceRepository.save(new Annonce("Audi A3", "Audi A 3 - II (2) Sportback 2.0 TDI 140 S Line 7CV", 13900.00, 3));
         annonceRepository.save(new Annonce("Tableau NY", "Tableau New York, Neuf", 10.00, 1));
         annonceRepository.save(new Annonce("Hand Spinner", "Hand Spinner, vert, neuf", 6.00, 2));
-        annonceRepository.save(new Annonce("Lego Star Wars", "Lego vaisseau Star wars neuf, avec boite scéllée", 75.00, 3));
-        annonceRepository.save(new Annonce("Livre C++", "Livre usé : Comment réussir son partiel de C++ haut la main !", 10.00, 1));
-        annonceRepository.save(new Annonce("iPhone 6S", "iPhone 6S 64GO pour pièces détachées ou comme boomrang", 500.00, 2));
+        Annonce annonce7 = new Annonce("Lego Star Wars", "Lego vaisseau Star wars neuf, avec boite scéllée", 75.00, 3);
+        annonce7.setEtatA("Cloturée");
+        annonceRepository.save(annonce7);
+        Annonce annonce8 = new Annonce("Livre C++", "Livre usé : Comment réussir son partiel de C++ haut la main !", 10.00, 1);
+        annonce8.setEtatA("Cloturée");
+        annonceRepository.save(annonce8);
+        Annonce annonce9 = new Annonce("iPhone 6S", "iPhone 6S 64GO pour pièces détachées ou comme boomrang", 500.00, 2);
+        annonce9.setEtatA("Cloturée");
+        annonceRepository.save(annonce9);
         System.out.println("---- Données insérées (FindAll) ----");
         for (Annonce annonce : annonceRepository.findAll()) {
                 System.out.println("id : " + annonce.getIdA() + " - Nom : " + annonce.getNomA() + " - description : " + annonce.getDescriptionA() + " - prix : " + annonce.getPrixA() + " - Id créateur : " + annonce.getIdUCreateur() + " - Candidat : " + annonce.getIdUCandidat() + " - Prix candidat : " + annonce.getPrixCandidat() + " - Date Candidat : " + annonce.getDateCandidat() + " - Etat : " + annonce.getEtatA());
