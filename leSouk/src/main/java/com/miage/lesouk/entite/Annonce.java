@@ -46,6 +46,9 @@ public class Annonce implements Serializable {
     /** prix Candidat */
     private Long prixCandidat;
     
+    /** date creation Annonce */
+    private Date dateCandidat;
+    
     /** commentaires */
     @Transient
     private List<Commentaire> listeCommentaires;
@@ -209,6 +212,24 @@ public class Annonce implements Serializable {
     }
 
     /**
+     * Récupérer date de candidature
+     * @return date de candidature
+     */
+    public Date getDateCandidat() {
+        return dateCandidat;
+    }
+
+    /**
+     * Saisir date de candidature
+     * @param dateCandidat 
+     */
+    public void setDateCandidat(Date dateCandidat) {
+        this.dateCandidat = dateCandidat;
+    }
+    
+    
+
+    /**
      * Récupérer la liste des commentaires
      * @return Liste Commentaires
      */
@@ -236,6 +257,7 @@ public class Annonce implements Serializable {
         hash = 97 * hash + Objects.hashCode(this.idUCreateur);
         hash = 97 * hash + Objects.hashCode(this.idUCandidat);
         hash = 97 * hash + Objects.hashCode(this.prixCandidat);
+        hash = 97 * hash + Objects.hashCode(this.dateCandidat);
         hash = 97 * hash + Objects.hashCode(this.listeCommentaires);
         return hash;
     }
@@ -277,6 +299,9 @@ public class Annonce implements Serializable {
             return false;
         }
         if (!Objects.equals(this.prixCandidat, other.prixCandidat)) {
+            return false;
+        }
+        if (!Objects.equals(this.dateCandidat, other.dateCandidat)) {
             return false;
         }
         if (!Objects.equals(this.listeCommentaires, other.listeCommentaires)) {

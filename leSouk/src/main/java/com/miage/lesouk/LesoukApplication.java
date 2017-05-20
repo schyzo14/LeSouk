@@ -55,9 +55,24 @@ public class LesoukApplication implements CommandLineRunner {
         System.out.println("---- Suppression de tous les annonces ----");
         annonceRepository.deleteAll();
         System.out.println("---- Ajout des annonces ----");
-        annonceRepository.save(new Annonce("TV 4K", "Neuve, 4K", (long) 450.00, 3));
-        annonceRepository.save(new Annonce("Canard de bain", "Jaune, flotte", (long) 3.00, 1));
-        annonceRepository.save(new Annonce("Table + chaises", "Table blanche avec 4 chaises laquees", (long) 100.00, 2));
+        Annonce annonce1= new Annonce("TV 4K", "Neuve, 4K", (long) 450.00, 3);
+        annonce1.setIdUCandidat(1);
+        annonce1.setPrixCandidat((long)300.00);
+        annonce1.setEtatA("Optionnée");
+        annonce1.setDateCandidat(new Date());
+        annonceRepository.save(annonce1);
+        Annonce annonce2= new Annonce("Canard de bain", "Jaune, flotte", (long) 3.00, 1);
+        annonce2.setIdUCandidat(2);
+        annonce2.setPrixCandidat((long)2.50);
+        annonce2.setEtatA("Optionnée");
+        annonce2.setDateCandidat(new Date());
+        annonceRepository.save(annonce2);
+        Annonce annonce3= new Annonce("Table + chaises", "Table blanche avec 4 chaises laquees", (long) 100.00, 2);
+        annonce3.setIdUCandidat(3);
+        annonce3.setPrixCandidat((long)80.00);
+        annonce3.setEtatA("Optionnée");
+        annonce3.setDateCandidat(new Date());
+        annonceRepository.save(annonce3);
         annonceRepository.save(new Annonce("Audi A3", "Audi A 3 - II (2) Sportback 2.0 TDI 140 S Line 7CV", (long) 13900.00, 3));
         annonceRepository.save(new Annonce("Tableau NY", "Tableau New York, Neuf", (long) 10.00, 1));
         annonceRepository.save(new Annonce("Hand Spinner", "Hand Spinner, vert, neuf", (long) 6.00, 2));
@@ -66,7 +81,7 @@ public class LesoukApplication implements CommandLineRunner {
         annonceRepository.save(new Annonce("iPhone 6S", "iPhone 6S 64GO pour pièces détachées ou comme boomrang", (long) 500.00, 2));
         System.out.println("---- Données insérées (FindAll) ----");
         for (Annonce annonce : annonceRepository.findAll()) {
-                System.out.println("id : " + annonce.getIdA() + " - Nom : " + annonce.getNomA() + " - description : " + annonce.getDescriptionA() + " - prix : " + annonce.getPrixA() + " - Id créateur : " + annonce.getIdUCreateur());
+                System.out.println("id : " + annonce.getIdA() + " - Nom : " + annonce.getNomA() + " - description : " + annonce.getDescriptionA() + " - prix : " + annonce.getPrixA() + " - Id créateur : " + annonce.getIdUCreateur() + " - Candidat : " + annonce.getIdUCandidat() + " - Prix candidat : " + annonce.getPrixCandidat() + " - Date Candidat : " + annonce.getDateCandidat() + " - Etat : " + annonce.getEtatA());
         }
         System.out.println("---- Fin de l'initialisation de Annonces ----");
         

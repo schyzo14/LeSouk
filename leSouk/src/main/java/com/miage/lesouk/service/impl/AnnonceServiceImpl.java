@@ -80,6 +80,7 @@ public class AnnonceServiceImpl implements AnnonceService {
         annonce.setIdUCandidat(idUCandidat);
         annonce.setPrixCandidat(prixCandidat);
         annonce.setEtatA("Optionnée");
+        annonce.setDateCandidat(new Date());
         
         if(utilisateur.getAnnoncesCandidatees() == null) {
             List<Annonce> annoncesCandidatees = new ArrayList<Annonce>();
