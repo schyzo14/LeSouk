@@ -1,5 +1,6 @@
 package com.miage.lesouk.entite;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.persistence.Transient;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Classe Annonce
@@ -32,6 +35,7 @@ public class Annonce implements Serializable {
     private Long prixA;
     
     /** date creation Annonce */
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date dateCreaA;
     
     /** etat Annonce */
@@ -47,6 +51,7 @@ public class Annonce implements Serializable {
     private Long prixCandidat;
     
     /** date creation Annonce */
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date dateCandidat;
     
     /** commentaires */

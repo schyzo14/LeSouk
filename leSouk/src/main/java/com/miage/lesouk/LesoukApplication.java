@@ -60,6 +60,8 @@ public class LesoukApplication implements CommandLineRunner {
         annonce1.setPrixCandidat((long)300.00);
         annonce1.setEtatA("Optionnée");
         annonce1.setDateCandidat(new Date());
+        System.out.println("Date Candidat : "+annonce1.getDateCandidat());
+        annonce1.setEtatA("Cloturee");
         annonceRepository.save(annonce1);
         Annonce annonce2= new Annonce("Canard de bain", "Jaune, flotte", (long) 3.00, 1);
         annonce2.setIdUCandidat(2);
