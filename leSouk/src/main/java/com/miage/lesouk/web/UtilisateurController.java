@@ -2,6 +2,7 @@ package com.miage.lesouk.web;
 
 import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Utilisateur;
+import com.miage.lesouk.interfacepublic.UtilisateurPublic;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.repository.UtilisateurRepository;
 import java.util.List;
@@ -39,6 +40,11 @@ public class UtilisateurController {
     @GetMapping("{idU}")
     public Utilisateur getUtilisateur(@PathVariable Integer idU) {
         return utilRepository.findById(idU);
+    }
+    
+    @GetMapping("user/{pseudoU}")
+    public UtilisateurPublic getUtilisateurByPseudo(@PathVariable String pseudoU) {
+        return utilRepository.findByPseudo(pseudoU);
     }
     
     @GetMapping("{idU}/annoncesCrees")

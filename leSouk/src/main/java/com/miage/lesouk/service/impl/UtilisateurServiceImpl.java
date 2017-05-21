@@ -7,6 +7,7 @@ package com.miage.lesouk.service.impl;
 
 import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Utilisateur;
+import com.miage.lesouk.interfacepublic.UtilisateurPublic;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.repository.UtilisateurRepository;
 import com.miage.lesouk.service.AnnonceService;
@@ -31,6 +32,11 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     @Override
     public Utilisateur getUtilisateur(Integer idU) {
         return utilisateurRepository.findById(idU);
+    }
+    
+    @Override
+    public UtilisateurPublic getUtilisateurByPseudo(String pseudo) {
+        return utilisateurRepository.findByPseudo(pseudo);
     }
 
     @Override
