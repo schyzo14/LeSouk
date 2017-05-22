@@ -43,6 +43,7 @@ public class LesoukApplication implements CommandLineRunner {
         utilisateurRepository.save(new Utilisateur("Fabarez", "Manon", "simplette", "simplette@bordeaux.fr", "s123", "bordeaux", "france"));
         utilisateurRepository.save(new Utilisateur("Darrab", "Youssef", "dormeur", "dormeur@maroc.fr", "d123", "tournefeuille", "france"));
         utilisateurRepository.save(new Utilisateur("Queille", "Aurore", "grincheuse", "grincheuse@toulouse.fr", "g123", "toulouse", "france"));
+        utilisateurRepository.save(new Utilisateur("Vierge", "User", "vierge", "vierge@user.fr", "v123", "paris", "france"));
         System.out.println("---- Données insérées (FindAll) ----");
         for (Utilisateur utilisateur : utilisateurRepository.findAll()) {
                 System.out.println("id : " + utilisateur.getId() + " - Nom : " + utilisateur.getNom() + " - Prenom : " + utilisateur.getPrenom() + " - Mail : "+ utilisateur.getMail() + " - Pseudo : " + utilisateur.getPseudo() + " -  Mdp : " + utilisateur.getMdp() + " - ville : "+utilisateur.getVille() + " - pays : "+utilisateur.getPays());
