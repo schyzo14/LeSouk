@@ -1,6 +1,7 @@
 package com.miage.lesouk.repository;
 
 import com.miage.lesouk.entite.Commentaire;
+import java.util.List;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
@@ -14,5 +15,5 @@ public interface CommentaireRepository extends PagingAndSortingRepository<Commen
      * @param idA       id de l'annonce
      * @return          liste des commentaires
      */
-    public Iterable<Commentaire> findByIdA(int idA);
+    public List<Commentaire> findByIdA(int idA);
 }
