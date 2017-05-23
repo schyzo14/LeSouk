@@ -1,5 +1,6 @@
 package com.miage.lesouk.entite;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import org.springframework.data.annotation.Id;
 
@@ -22,6 +23,7 @@ public class Commentaire {
     // Texte du commentaire
     private String texte;
     // Date de création du commentaire
+    @JsonFormat(pattern="dd-MM-yyyy")
     private Date dateCreation;
 
     /**
