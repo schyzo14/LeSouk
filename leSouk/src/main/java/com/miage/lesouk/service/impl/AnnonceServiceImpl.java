@@ -29,7 +29,9 @@ public class AnnonceServiceImpl implements AnnonceService {
 
     @Override
     public Annonce getAnnonce(Integer idA) {
-        return annonceRepository.findByIdA(idA);
+        Annonce a = annonceRepository.findByIdA(idA);
+        a.setListeCommentaires(commentaireService.getCommentairesByIdA(idA));
+        return a;
     }
 
     @Override
