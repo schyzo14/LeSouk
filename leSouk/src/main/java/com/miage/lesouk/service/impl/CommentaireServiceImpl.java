@@ -4,6 +4,7 @@ import com.miage.lesouk.entite.Commentaire;
 import com.miage.lesouk.repository.CommentaireRepository;
 import com.miage.lesouk.service.CommentaireService;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class CommentaireServiceImpl implements CommentaireService{
      * @return          liste d'annonce
      */
     @Override
-    public Iterable<Commentaire> getCommentairesByIdA(Integer idA) {
+    public List<Commentaire> getCommentairesByIdA(Integer idA) {
         return commentaireRepository.findByIdA(idA);
     }
     

@@ -2,6 +2,7 @@ package com.miage.lesouk.service;
 
 import com.miage.lesouk.entite.Commentaire;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Service de Commentaire
@@ -24,5 +25,5 @@ public interface CommentaireService {
      * @param idA       id de l'annonce
      * @return          liste d'annonce
      */
-    public Iterable<Commentaire> getCommentairesByIdA (Integer idA);
+    public List<Commentaire> getCommentairesByIdA (Integer idA);
 }
