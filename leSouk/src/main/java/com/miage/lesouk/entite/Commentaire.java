@@ -39,6 +39,16 @@ public class Commentaire {
         this.texte = texte;
         this.dateCreation = dateCreation;
     }
+    
+    public Commentaire(int idA, int idU, String texte) {
+        this.idA = idA;
+        this.idU = idU;
+        this.texte = texte;
+        this.dateCreation = new Date();
+    }
+    
+    public Commentaire() {
+    }
 
     /**
      * Récupère l'id du commentaire
