@@ -104,17 +104,11 @@ public class AnnonceServiceImpl implements AnnonceService {
     @Override
     public Annonce commenterAnnonce(Integer idA, Integer idUser, String texte) {
         Annonce annonce = annonceRepository.findByIdA(idA);
-        Date date = new Date();
-        Commentaire commentaire = new Commentaire(idA, idUser, texte, date);
         
-        if(annonce.getListeCommentaires() == null) {
-            List<Commentaire> commentaires = new ArrayList<Commentaire>();
-            annonce.setListeCommentaires(commentaires);
-        }
-        annonce.getListeCommentaires().add(commentaire);
+        commentaireService.createCommentaire(idUser, idA, texte, new Date());
         
-        commentaireService.createCommentaire(commentaire.getIdU(), commentaire.getIdA(), commentaire.getTexte(),
-                commentaire.getDateCreation());
+        annonce.setListeCommentaires(commentaireService.getCommentairesByIdA(idA));
+        
         return annonceRepository.save(annonce);
     }
     
