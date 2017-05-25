@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author Youssef DARRAB - Manon FABAREZ - Aurore QUEILLE
  */
 @Document(collection = "commentaires")
-public class Commentaire {
+public class Commentaire implements Comparable<Commentaire>{
     
     // Id du commentaire autogénéré
     @Id
@@ -128,6 +128,16 @@ public class Commentaire {
      */
     public void setDateCreation(Date dateCreation) {
         this.dateCreation = dateCreation;
+    }
+
+    /**
+     * Comparer par la date de création
+     * @param o     commentaire
+     * @return      compareTo int
+     */
+    @Override
+    public int compareTo(Commentaire o) {
+        return getDateCreation().compareTo(o.getDateCreation());
     }
     
 }

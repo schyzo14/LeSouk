@@ -3,6 +3,7 @@ package com.miage.lesouk.service.impl;
 import com.miage.lesouk.entite.Commentaire;
 import com.miage.lesouk.repository.CommentaireRepository;
 import com.miage.lesouk.service.CommentaireService;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,9 @@ public class CommentaireServiceImpl implements CommentaireService{
      */
     @Override
     public List<Commentaire> getCommentairesByIdA(Integer idA) {
-        return commentaireRepository.findByIdA(idA);
+        List<Commentaire> listCommentaires = commentaireRepository.findByIdA(idA);
+        Collections.sort(listCommentaires, Collections.reverseOrder());
+        return listCommentaires;
     }
     
 }
