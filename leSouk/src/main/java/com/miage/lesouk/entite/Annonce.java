@@ -70,6 +70,17 @@ public class Annonce implements Serializable {
         this.etatA = "Active";
     }
 
+    public Annonce(String nomA, String descriptionA, Double prixA, int idUCreateur, Date dateCrea) {
+        this.nomA = nomA;
+        this.descriptionA = descriptionA;
+        this.prixA = prixA;
+        this.idUCreateur = idUCreateur;
+        this.dateCreaA = dateCrea;
+        
+        // paramètres par défaut
+        this.etatA = "Active";
+    }
+    
     /**
      * Récupérer id Annonce
      * @return idA
