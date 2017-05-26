@@ -5,6 +5,8 @@ import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.interfacepublic.UtilisateurPublic;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.repository.UtilisateurRepository;
+import com.miage.lesouk.service.AnnonceService;
+import com.miage.lesouk.service.UtilisateurService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,41 +22,41 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/utilisateurs")
 public class UtilisateurController {
     
-    // Repository de Utilisateur
+    // Service de Utilisateur
     @Autowired
-    private UtilisateurRepository utilRepository;
+    private UtilisateurService utilService;
     
-    //Repository de Annonce
+    //Service de Annonce
     @Autowired
-    private AnnonceRepository annonceRepository;
+    private AnnonceService annonceService;
     
     /**
      * GET http://localhost:8080/api/lesouk/utilisateurs
      * @return 
      */
-    @GetMapping
+    /*@GetMapping
     public Iterable<Utilisateur> findUtilisateurs() {
-        return this.utilRepository.findAll();
-    }
+        return this.utilService.findAll();
+    }*/
     
     @GetMapping("{idU}")
     public Utilisateur getUtilisateur(@PathVariable Integer idU) {
-        return utilRepository.findById(idU);
+        return utilService.getUtilisateur(idU);
     }
     
     @GetMapping("user/{pseudoU}")
     public UtilisateurPublic getUtilisateurByPseudo(@PathVariable String pseudoU) {
-        return utilRepository.findByPseudo(pseudoU);
+        return utilService.getUtilisateurByPseudo(pseudoU);
     }
     
     @GetMapping("{idU}/annoncesCrees")
     public List<Annonce> getAnnoncesCrees(@PathVariable Integer idU) {
-        return annonceRepository.findByIdUCreateur(idU);
+        return annonceService.getAnnoncesCreees(idU);
     }
     
     @GetMapping("{idU}/annoncesCandidatees")
     public List<Annonce> getAnnoncesCandidatees(@PathVariable Integer idU) {
-        return annonceRepository.findByIdUCandidat(idU);
+        return annonceService.getAnnoncesCandidatees(idU);
     }
     
     
