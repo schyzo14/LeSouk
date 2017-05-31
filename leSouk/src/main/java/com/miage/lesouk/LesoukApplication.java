@@ -91,6 +91,9 @@ public class LesoukApplication implements CommandLineRunner {
         annonceRepository.save(annonce8);
         Annonce annonce9 = new Annonce("iPhone 6S", "iPhone 6S 64GO pour pièces détachées ou comme boomrang", 500.00, utilisateur2, new Date(System.currentTimeMillis()-100000000));
         annonce9.setEtatA("Cloturée");
+        annonce9.setCandidat(utilisateur2);
+        annonce9.setPrixCandidat(2.50);
+        annonce9.setDateCandidat(new Date());
         annonceRepository.save(annonce9);
         System.out.println("---- Données insérées (FindAll) ----");
         for (Annonce annonce : annonceRepository.findAll()) {
