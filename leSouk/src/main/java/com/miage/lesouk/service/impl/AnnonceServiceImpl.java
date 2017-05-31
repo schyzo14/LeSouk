@@ -36,12 +36,12 @@ public class AnnonceServiceImpl implements AnnonceService {
 
     @Override
     public List<Annonce> getAnnoncesCreees(Integer idUCreateur) {
-        return annonceRepository.findByIdUCreateur(idUCreateur);
+        return annonceRepository.findBycreateur(utilisateurService.getUtilisateur(idUCreateur));
     }
 
     @Override
     public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat) {
-        return annonceRepository.findByIdUCandidat(idUCandidat);
+        return annonceRepository.findByCandidat(utilisateurService.getUtilisateur(idUCandidat));
     }
 
     @Override
@@ -61,7 +61,10 @@ public class AnnonceServiceImpl implements AnnonceService {
 
     @Override
     public Annonce creerAnnonce(String nomA, String descriptionA, Double prixA, Integer idUCreateur) {
-        Annonce annonce = new Annonce(nomA, descriptionA, prixA, idUCreateur);
+
+        Utilisateur UCreateur = utilisateurService.getUtilisateur(idUCreateur);
+                
+        Annonce annonce = new Annonce(nomA, descriptionA, prixA, UCreateur);
         Utilisateur utilisateur = utilisateurService.getUtilisateur(idUCreateur);
         
         if(utilisateur.getAnnoncesCreees() == null) {
@@ -79,7 +82,7 @@ public class AnnonceServiceImpl implements AnnonceService {
         Annonce annonce = annonceRepository.findByIdA(idA);
         Utilisateur utilisateur = utilisateurService.getUtilisateur(idUCandidat);
         
-        annonce.setIdUCandidat(idUCandidat);
+        annonce.setCandidat(utilisateurService.getUtilisateur(idUCandidat));
         annonce.setPrixCandidat(prixCandidat);
         annonce.setEtatA("Optionnée");
         annonce.setDateCandidat(new Date());

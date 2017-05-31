@@ -1,6 +1,7 @@
 package com.miage.lesouk.repository;
 
 import com.miage.lesouk.entite.Annonce;
+import com.miage.lesouk.entite.Utilisateur;
 import java.util.List;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
@@ -20,14 +21,14 @@ public interface AnnonceRepository extends PagingAndSortingRepository<Annonce, I
      * @param idUCreateur
      * @return List Annonce
      */
-    public List<Annonce> findByIdUCreateur(Integer idUCreateur);
+    public List<Annonce> findBycreateur(Utilisateur createur);
     
     /**
      * Chercher les annonces d'un candidat
      * @param idUCandidat
      * @return List Annonce
      */
-    public List<Annonce> findByIdUCandidat(Integer idUCandidat);
+    public List<Annonce> findByCandidat(Utilisateur candidat);
     
     /**
      * Chercher les titres d'annonces par mot-clé

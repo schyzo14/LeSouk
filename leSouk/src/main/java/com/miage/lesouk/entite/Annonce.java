@@ -1,13 +1,18 @@
 package com.miage.lesouk.entite;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -40,10 +45,17 @@ public class Annonce implements Serializable {
     private String etatA; //à améliorer avec une enum
     
     /** id Createur */
-    private Integer idUCreateur;
+ //   private Integer idUCreateur;
+    @ManyToOne
+    @JoinColumn(name="id")
+    @JsonIgnoreProperties({"annoncesCandidatees", "annoncesCreees"})
+    private Utilisateur createur;
     
     /** id Candidat */
-    private Integer idUCandidat;
+    @ManyToOne
+    @JoinColumn(name="id2")
+    @JsonIgnoreProperties({"annoncesCandidatees", "annoncesCreees"})
+    private Utilisateur candidat;
     
     /** prix Candidat */
     private Double prixCandidat;
@@ -59,22 +71,22 @@ public class Annonce implements Serializable {
     public Annonce() {
     }
     
-    public Annonce(String nomA, String descriptionA, Double prixA, int idUCreateur) {
+    public Annonce(String nomA, String descriptionA, Double prixA, Utilisateur UCreateur) {
         this.nomA = nomA;
         this.descriptionA = descriptionA;
         this.prixA = prixA;
-        this.idUCreateur = idUCreateur;
+        this.createur = UCreateur;
         
         // paramètres par défaut
         this.dateCreaA = new Date();
         this.etatA = "Active";
     }
 
-    public Annonce(String nomA, String descriptionA, Double prixA, int idUCreateur, Date dateCrea) {
+    public Annonce(String nomA, String descriptionA, Double prixA, Utilisateur UCreateur, Date dateCrea) {
         this.nomA = nomA;
         this.descriptionA = descriptionA;
         this.prixA = prixA;
-        this.idUCreateur = idUCreateur;
+        this.createur = UCreateur;
         this.dateCreaA = dateCrea;
         
         // paramètres par défaut
@@ -178,35 +190,35 @@ public class Annonce implements Serializable {
     }
 
     /**
-     * Récupérer id créateur Annonce
-     * @return idUCreateur
+     * Récupérer créateur Annonce
+     * @param UCreateur 
      */
-    public Integer getIdUCreateur() {
-        return idUCreateur;
+    public void setCreateur(Utilisateur UCreateur) {
+        this.createur = UCreateur;
+    }
+    
+    /**
+     * Saisir créateur Annonce
+     * @return  createur
+     */
+    public Utilisateur getCreateur() {
+        return createur;
     }
 
     /**
-     * Saisir id créateur Annonce
-     * @param idUCreateur 
+     * Récupérer candidat Annonce
+     * @return candidat
      */
-    public void setIdUCreateur(Integer idUCreateur) {
-        this.idUCreateur = idUCreateur;
+    public Utilisateur getCandidat() {
+        return candidat;
     }
 
     /**
-     * Récupérer id candidat Annonce
-     * @return idUCandidat
+     * Saisir candidat Annonce
+     * @param candidat 
      */
-    public Integer getIdUCandidat() {
-        return idUCandidat;
-    }
-
-    /**
-     * Saisir id candidat Annonce
-     * @param idUCandidat 
-     */
-    public void setIdUCandidat(Integer idUCandidat) {
-        this.idUCandidat = idUCandidat;
+    public void setCandidat(Utilisateur candidat) {
+        this.candidat = candidat;
     }
 
     /**
@@ -268,8 +280,8 @@ public class Annonce implements Serializable {
         hash = 97 * hash + Objects.hashCode(this.prixA);
         hash = 97 * hash + Objects.hashCode(this.dateCreaA);
         hash = 97 * hash + Objects.hashCode(this.etatA);
-        hash = 97 * hash + Objects.hashCode(this.idUCreateur);
-        hash = 97 * hash + Objects.hashCode(this.idUCandidat);
+        hash = 97 * hash + Objects.hashCode(this.createur);
+        hash = 97 * hash + Objects.hashCode(this.candidat);
         hash = 97 * hash + Objects.hashCode(this.prixCandidat);
         hash = 97 * hash + Objects.hashCode(this.dateCandidat);
         hash = 97 * hash + Objects.hashCode(this.listeCommentaires);
@@ -306,10 +318,10 @@ public class Annonce implements Serializable {
         if (!Objects.equals(this.dateCreaA, other.dateCreaA)) {
             return false;
         }
-        if (!Objects.equals(this.idUCreateur, other.idUCreateur)) {
+        if (!Objects.equals(this.createur, other.createur)) {
             return false;
         }
-        if (!Objects.equals(this.idUCandidat, other.idUCandidat)) {
+        if (!Objects.equals(this.candidat, other.candidat)) {
             return false;
         }
         if (!Objects.equals(this.prixCandidat, other.prixCandidat)) {

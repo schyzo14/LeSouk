@@ -34,12 +34,12 @@ public class AnnonceController {
     @PostMapping
     public Annonce postAnnonce(@RequestBody Annonce annonce) {
         return annonceService.creerAnnonce(annonce.getNomA(), annonce.getDescriptionA(), annonce.getPrixA(),
-                annonce.getIdUCreateur());
+                annonce.getCreateur().getId());
     }
     
     @PutMapping("candidater/{idA}")
     public Annonce putAnnonceCandidater(@PathVariable Integer idA, @RequestBody Annonce annonce) {
-        return annonceService.candidaterAnnonce(idA, annonce.getIdUCandidat(), annonce.getPrixCandidat());
+        return annonceService.candidaterAnnonce(idA, annonce.getCandidat().getId(), annonce.getPrixCandidat());
     }
     
     @PutMapping("cloturer/{idA}")

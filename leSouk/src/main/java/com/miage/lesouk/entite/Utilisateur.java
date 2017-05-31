@@ -1,11 +1,18 @@
 package com.miage.lesouk.entite;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.miage.lesouk.interfacepublic.ParticipantPublic;
 import com.miage.lesouk.interfacepublic.UtilisateurPublic;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 /**
@@ -18,6 +25,7 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     @Id
     @GeneratedValue
     private Integer id;
+    private Integer id2;
     // Nom de l'utilisateur
     private String nom;
     // Prénom de l'utilisateur
@@ -33,16 +41,19 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     // Pays
     private String pays;
     // Liste Annonces Crées
-    @Transient
+    @OneToMany(targetEntity=Annonce.class, mappedBy="createur")
+    @JsonIgnoreProperties({"createur", "candidat"})
     private List<Annonce> annoncesCreees;
     // Liste Annonces Candidatées
-    @Transient
+    @OneToMany(targetEntity=Annonce.class, mappedBy="candidat")
+    @JsonIgnoreProperties({"createur", "candidat"})
     private List<Annonce> annoncesCandidatees;
 
     /**
      * Constructeur par défaut
      */
     public Utilisateur() {
+        this.id2 = id;
     }
 
     /**
@@ -57,6 +68,7 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
      */
     public Utilisateur(String nom, String prenom, String pseudo, String mail, String mdp, String ville, String pays) {
         this.id = id;
+        this.id2 = id;
         this.nom = nom;
         this.prenom = prenom;
         this.pseudo = pseudo;
@@ -80,6 +92,19 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
      */
     public void setId(Integer id) {
         this.id = id;
+    }
+    
+        public Integer getId2() {
+        id2 = id;
+        return id2;
+    }
+
+    /**
+     * Saisir idUtilisateur
+     * @param id 
+     */
+    public void setId2(Integer id) {
+        this.id2 = id;
     }
 
     /**

@@ -31,8 +31,8 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     @Override
     public Utilisateur getUtilisateur(Integer idU) {
         Utilisateur u = utilisateurRepository.findById(idU);
-        u.setAnnoncesCreees(annonceService.getAnnoncesCreees(idU));
-        u.setAnnoncesCandidatees(annonceService.getAnnoncesCandidatees(idU));
+    //    u.setAnnoncesCreees(annonceService.getAnnoncesCreees(idU));
+    //    u.setAnnoncesCandidatees(annonceService.getAnnoncesCandidatees(idU));
         
         return u;
     }
