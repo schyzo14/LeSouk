@@ -11,6 +11,7 @@ import com.miage.lesouk.interfacepublic.UtilisateurPublic;
 import com.miage.lesouk.repository.UtilisateurRepository;
 import com.miage.lesouk.service.AnnonceService;
 import com.miage.lesouk.service.UtilisateurService;
+import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,8 @@ public class UtilisateurServiceImpl implements UtilisateurService{
         Utilisateur u = utilisateurRepository.findById(idU);
     //    u.setAnnoncesCreees(annonceService.getAnnoncesCreees(idU));
     //    u.setAnnoncesCandidatees(annonceService.getAnnoncesCandidatees(idU));
+        Collections.sort(u.getAnnoncesCreees(), Collections.reverseOrder());
+        Collections.sort(u.getAnnoncesCandidatees(), Collections.reverseOrder());
         
         return u;
     }

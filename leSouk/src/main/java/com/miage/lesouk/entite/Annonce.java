@@ -21,7 +21,7 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name="Annonce")
-public class Annonce implements Serializable {
+public class Annonce implements Serializable, Comparable<Annonce> {
     
     /** id Annonce */
     @Id
@@ -334,5 +334,10 @@ public class Annonce implements Serializable {
             return false;
         }
         return true;
+    }
+    
+    @Override
+    public int compareTo(Annonce o) {
+        return getDateCreaA().compareTo(o.getDateCreaA());
     }
 }
