@@ -3,7 +3,7 @@ package com.miage.lesouk.web;
 import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Commentaire;
 import com.miage.lesouk.service.AnnonceService;
-import java.util.Set;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +26,9 @@ public class AnnonceController {
         return annonceService.getAnnonce(idA);
     }
     
-    @GetMapping("liste/{motsCles}")
-    public Set<Annonce> getAnnonces(@PathVariable String motsCles) {
-        return annonceService.getAnnonces(motsCles);
+    @GetMapping("rechercher/{idU}/{motsCles}")
+    public List<Annonce> getAnnonces(@PathVariable Integer idU, @PathVariable String motsCles) {
+        return annonceService.getAnnonces(idU, motsCles);
     }
     
     @PostMapping

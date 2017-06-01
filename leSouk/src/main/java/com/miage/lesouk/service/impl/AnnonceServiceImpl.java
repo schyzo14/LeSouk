@@ -1,7 +1,6 @@
 package com.miage.lesouk.service.impl;
 
 import com.miage.lesouk.entite.Annonce;
-import com.miage.lesouk.entite.Commentaire;
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.service.AnnonceService;
@@ -10,8 +9,6 @@ import com.miage.lesouk.service.UtilisateurService;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,18 +42,8 @@ public class AnnonceServiceImpl implements AnnonceService {
     }
 
     @Override
-    public Set<Annonce> getAnnonces(String motsCles) {
-        Set<Annonce> annonces = new TreeSet<>();
-        
-        for(Annonce a : annonceRepository.findByNomAContaining(motsCles)) {
-            annonces.add(a);
-        }
-        
-        for(Annonce a : annonceRepository.findByDescriptionAContaining(motsCles)) {
-            annonces.add(a);
-        }
-        
-        return annonces;
+    public List<Annonce> getAnnonces(Integer idU, String motsCles) {
+        return annonceRepository.findByMotsClesAndSort(idU, motsCles);
     }
 
     @Override

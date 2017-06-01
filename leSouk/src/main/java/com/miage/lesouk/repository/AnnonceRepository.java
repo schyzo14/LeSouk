@@ -3,7 +3,9 @@ package com.miage.lesouk.repository;
 import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Utilisateur;
 import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  * Interface Repository classe Annonce
@@ -18,29 +20,24 @@ public interface AnnonceRepository extends PagingAndSortingRepository<Annonce, I
     
     /**
      * Chercher les annonces d'une personne
-     * @param idUCreateur
+     * @param createur
      * @return List Annonce
      */
     public List<Annonce> findBycreateur(Utilisateur createur);
     
     /**
      * Chercher les annonces d'un candidat
-     * @param idUCandidat
+     * @param candidat
      * @return List Annonce
      */
     public List<Annonce> findByCandidat(Utilisateur candidat);
     
     /**
-     * Chercher les titres d'annonces par mot-clé
-     * @param motsCles
+     * Chercher les annonces par mot-clé
+     * @param idU
+     * @param motscles
      * @return List Annonce
      */
-    public List<Annonce> findByNomAContaining(String motsCles);
-    
-    /**
-     * Chercher les descriptions d'annonces par mot-clé
-     * @param motsCles
-     * @return List Annonce
-     */
-    public List<Annonce> findByDescriptionAContaining(String motsCles);
+    @Query("SELECT a FROM Annonce a WHERE a.etatA = 'Active' AND a.createur.id <> :idU AND (a.nomA like %:motscles% OR a.descriptionA like %:motscles%) ORDER BY a.dateCreaA DESC")
+    public List<Annonce> findByMotsClesAndSort(@Param("idU") Integer idU, @Param("motscles") String motscles);
 }
