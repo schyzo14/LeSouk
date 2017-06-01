@@ -38,6 +38,6 @@ public interface AnnonceRepository extends PagingAndSortingRepository<Annonce, I
      * @param motscles
      * @return List Annonce
      */
-    @Query("SELECT a FROM Annonce a WHERE a.etatA = 'Active' AND a.createur.id <> :idU AND (a.nomA like %:motscles% OR a.descriptionA like %:motscles%) ORDER BY a.dateCreaA DESC")
+    @Query("SELECT a FROM Annonce a WHERE a.etatA = 'Active' AND a.createur.id <> :idU AND (UPPER(a.nomA) like UPPER('%'||:motscles||'%') OR UPPER(a.descriptionA) like UPPER('%'||:motscles||'%')) ORDER BY a.dateCreaA DESC")
     public List<Annonce> findByMotsClesAndSort(@Param("idU") Integer idU, @Param("motscles") String motscles);
 }
