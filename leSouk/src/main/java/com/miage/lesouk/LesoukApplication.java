@@ -63,10 +63,8 @@ public class LesoukApplication implements CommandLineRunner {
         Annonce annonce1= new Annonce("TV 4K", "Neuve, 4K", 450.00, utilisateur3, new Date(System.currentTimeMillis()-900000000));
         annonce1.setCandidat(utilisateur1);
         annonce1.setPrixCandidat(300.00);
-        annonce1.setEtatA("Optionnée");
         annonce1.setDateCandidat(new Date());
-        System.out.println("Date Candidat : "+annonce1.getDateCandidat());
-        annonce1.setEtatA("Cloturee");
+        annonce1.setEtatA("Cloturée");
         annonceRepository.save(annonce1);
         Annonce annonce2= new Annonce("Canard de bain", "Jaune, flotte", 3.00, utilisateur1, new Date(System.currentTimeMillis()-800000000));
         annonce2.setCandidat(utilisateur2);
