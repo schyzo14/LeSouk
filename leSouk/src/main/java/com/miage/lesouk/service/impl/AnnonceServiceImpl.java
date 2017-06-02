@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,6 +26,7 @@ public class AnnonceServiceImpl implements AnnonceService {
     private CommentaireService commentaireService;
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public Annonce getAnnonce(Integer idA) {
         Annonce a = annonceRepository.findByIdA(idA);
         a.setListeCommentaires(commentaireService.getCommentairesByIdA(idA));
@@ -32,21 +34,25 @@ public class AnnonceServiceImpl implements AnnonceService {
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public List<Annonce> getAnnoncesCreees(Integer idUCreateur) {
         return annonceRepository.findBycreateur(utilisateurService.getUtilisateur(idUCreateur));
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat) {
         return annonceRepository.findByCandidat(utilisateurService.getUtilisateur(idUCandidat));
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public List<Annonce> getAnnonces(Integer idU, String motsCles) {
         return annonceRepository.findByMotsClesAndSort(idU, motsCles);
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public Annonce creerAnnonce(String nomA, String descriptionA, Double prixA, Integer idUCreateur) {
 
         Utilisateur UCreateur = utilisateurService.getUtilisateur(idUCreateur);
@@ -65,6 +71,7 @@ public class AnnonceServiceImpl implements AnnonceService {
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public Annonce candidaterAnnonce(Integer idA, Integer idUCandidat, Double prixCandidat) {
         Annonce annonce = annonceRepository.findByIdA(idA);
         Utilisateur utilisateur = utilisateurService.getUtilisateur(idUCandidat);
@@ -85,6 +92,7 @@ public class AnnonceServiceImpl implements AnnonceService {
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public Annonce cloturerAnnonce(Integer idA) {
         Annonce annonce = annonceRepository.findByIdA(idA);
         annonce.setEtatA("Cloturée");
@@ -92,6 +100,7 @@ public class AnnonceServiceImpl implements AnnonceService {
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public Annonce commenterAnnonce(Integer idA, Integer idUser, String texte) {
         Annonce annonce = annonceRepository.findByIdA(idA);
         

@@ -51,6 +51,7 @@ public class UtilisateurController {
         return utilService.getUtilisateurByPseudo(pseudoU);
     }
     
+    /*
     @GetMapping("{idU}/annoncesCrees")
     public List<Annonce> getAnnoncesCrees(@PathVariable Integer idU) {
         return annonceService.getAnnoncesCreees(idU);
@@ -60,6 +61,12 @@ public class UtilisateurController {
     public List<Annonce> getAnnoncesCandidatees(@PathVariable Integer idU) {
         return annonceService.getAnnoncesCandidatees(idU);
     }
+    */
     
+    @GetMapping("seConnecter/{pseudoU}")
+    public UtilisateurPublic seConnecter(@PathVariable String pseudoU) {
+        /*********************** A FAIRE **************************/
+        return utilService.getUtilisateurByPseudo(pseudoU);
+    }
     
 }

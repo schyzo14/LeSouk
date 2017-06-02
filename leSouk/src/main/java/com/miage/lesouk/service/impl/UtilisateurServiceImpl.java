@@ -14,6 +14,7 @@ import com.miage.lesouk.service.UtilisateurService;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 /**
@@ -30,6 +31,7 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     private UtilisateurRepository utilisateurRepository;
     
     @Override
+    @PreAuthorize("hasRole('USER')")
     public Utilisateur getUtilisateur(Integer idU) {
         Utilisateur u = utilisateurRepository.findById(idU);
     //    u.setAnnoncesCreees(annonceService.getAnnoncesCreees(idU));
@@ -41,21 +43,24 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     }
     
     @Override
-    public UtilisateurPublic getUtilisateurByPseudo(String pseudo) {
+    public Utilisateur getUtilisateurByPseudo(String pseudo) {
         return utilisateurRepository.findByPseudo(pseudo);
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public List<Annonce> getAnnoncesCreees(Integer idUCreateur) {
         return annonceService.getAnnoncesCreees(idUCreateur);
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat) {
         return annonceService.getAnnoncesCandidatees(idUCandidat);
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
     public Utilisateur createUtilisateur(Utilisateur u) {
         return utilisateurRepository.save(u);
     }

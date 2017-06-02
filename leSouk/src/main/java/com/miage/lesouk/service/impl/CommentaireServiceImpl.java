@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,6 +30,7 @@ public class CommentaireServiceImpl implements CommentaireService{
      * @return          le commentaire créé
      */
     @Override
+    @PreAuthorize("hasRole('USER')")
     public Commentaire createCommentaire(int idU, int idA, String texte, Date date) {
         Commentaire commentaire = new Commentaire(idA, idU, texte, date);
         commentaireRepository.save(commentaire);
@@ -41,6 +43,7 @@ public class CommentaireServiceImpl implements CommentaireService{
      * @return          liste d'annonce
      */
     @Override
+    @PreAuthorize("hasRole('USER')")
     public List<Commentaire> getCommentairesByIdA(Integer idA) {
         List<Commentaire> listCommentaires = commentaireRepository.findByIdA(idA);
         Collections.sort(listCommentaires, Collections.reverseOrder());

@@ -28,7 +28,7 @@ public interface UtilisateurRepository extends PagingAndSortingRepository<Utilis
          * @param pseudo
          * @return Utilisateur
          */
-        public UtilisateurPublic findByPseudo(String pseudo);
+        public Utilisateur findByPseudo(String pseudo);
                 
         /**
          * Chercher un utilisateur par son mail

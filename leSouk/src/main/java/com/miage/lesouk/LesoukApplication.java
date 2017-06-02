@@ -13,7 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 
+ * Initialisation des données de test
  * @author Youssef DARRAB - Manon FABAREZ - Aurore QUEILLE
  */
 @SpringBootApplication
