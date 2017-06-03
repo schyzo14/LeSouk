@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserDetailsService myUserDetailsService() {
-        return new MyUserDetailsService();
+        return new AuthentificationService();
     }
 
     @Bean
@@ -46,12 +46,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {      
         http
             .authorizeRequests()
-            .antMatchers(HttpMethod.GET, "/", "/index.html", "/app.js", "/bower_components/**", "/templates/**", "/css/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/index.html", "/app.js", "/bower_components/**", "/templates/**", "/css/**").permitAll()
+            .antMatchers(HttpMethod.POST, "/api/seConnecter").permitAll()
             .antMatchers("/api/utilisateurs/**", "/api/annonces/**").hasRole("USER")
             .anyRequest().denyAll()
             .and()
             .rememberMe()
-            .alwaysRemember(true);
+            .alwaysRemember(true)
+            .and()
+            .csrf().disable();
         
     }
 

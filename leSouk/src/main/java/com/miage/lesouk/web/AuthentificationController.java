@@ -5,13 +5,16 @@ import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.interfacepublic.UtilisateurPublic;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.repository.UtilisateurRepository;
+import com.miage.lesouk.securityComponents.AuthentificationService;
 import com.miage.lesouk.service.AnnonceService;
 import com.miage.lesouk.service.UtilisateurService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("/api/utilisateurs")
-public class UtilisateurController {
+@RequestMapping("/api/seConnecter")
+public class AuthentificationController {
     
     // Service de Utilisateur
     @Autowired
@@ -30,36 +33,15 @@ public class UtilisateurController {
     
     //Service de Annonce
     @Autowired
-    private AnnonceService annonceService;
+    private AuthentificationService authentificationService;
     
     /**
-     * GET http://localhost:8080/api/lesouk/utilisateurs
+     * POST http://localhost:8080/api/seConnecter
      * @return 
      */
-    /*@GetMapping
-    public Iterable<Utilisateur> findUtilisateurs() {
-        return this.utilService.findAll();
-    }*/
-    
-    @GetMapping("{idU}")
-    public Utilisateur getUtilisateur(@PathVariable Integer idU) {
-        return utilService.getUtilisateur(idU);
+   @PostMapping
+    public UserDetails seConnecter(@RequestBody String data) {
+        return authentificationService.loadUserByUsername(data);
     }
     
-    @GetMapping("user/{pseudoU}")
-    public UtilisateurPublic getUtilisateurByPseudo(@PathVariable String pseudoU) {
-        return utilService.getUtilisateurByPseudo(pseudoU);
-    }
-    
-    /*
-    @GetMapping("{idU}/annoncesCrees")
-    public List<Annonce> getAnnoncesCrees(@PathVariable Integer idU) {
-        return annonceService.getAnnoncesCreees(idU);
-    }
-    
-    @GetMapping("{idU}/annoncesCandidatees")
-    public List<Annonce> getAnnoncesCandidatees(@PathVariable Integer idU) {
-        return annonceService.getAnnoncesCandidatees(idU);
-    }
-    */
 }
