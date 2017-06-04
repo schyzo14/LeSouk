@@ -2,6 +2,8 @@ package com.miage.lesouk.securityComponents;
 
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.repository.UtilisateurRepository;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.HashSet;
 import java.util.Set;
 import javax.transaction.Transactional;
@@ -28,11 +30,15 @@ public class AuthentificationService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String data) throws UsernameNotFoundException {
 
-        // Format data : pseudo-mdp
-        String[] parts = data.split("-");
-        String pseudo = parts[0];
-        String mdp = parts[1];
-        
+        // Format data : {"data":"c2ltcGxldHRlOnMxMjM="}
+        String[] parts = data.split("\"");
+        String dataImp = parts[3];
+        byte [] trad = Base64.getDecoder().decode(dataImp);
+        String tradTot = new String(trad, StandardCharsets.UTF_8);
+        String[] parts2 = tradTot.split(":"); // simplette:s123
+        String pseudo = parts2[0];
+        String mdp = parts2[1];
+
         Utilisateur utilisateur = this.utilisateurRepository.findByPseudo(pseudo);
         
         if(utilisateur == null){
