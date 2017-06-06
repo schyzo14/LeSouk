@@ -13,6 +13,6 @@ public interface ParticipantPublic {
     String getNom();
     String getPrenom();
     String getMail();
-    String getVille();
-    String getPays();
+    String getCity();
+    String getCountry();
 }

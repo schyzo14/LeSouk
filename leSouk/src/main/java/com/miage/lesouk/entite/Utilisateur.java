@@ -31,9 +31,9 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     // Mot de passe de l'utilisateur
     private String mdp;
     // Ville
-    private String ville;
+    private String city;
     // Pays
-    private String pays;
+    private String country;
     // Liste Annonces Crées
     @OneToMany(targetEntity=Annonce.class, mappedBy="createur")
     @JsonIgnoreProperties({"createur", "candidat"})
@@ -68,8 +68,10 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
         this.pseudo = pseudo;
         this.mail = mail;
         this.mdp = mdp;
-        this.pays = pays;
-        this.ville = ville;
+        this.country = pays;
+        this.city = ville;
+        this.country = country;
+        this.city = city;
     }
 
     /**
@@ -186,35 +188,35 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     }
 
     /**
-     * Récupérer la ville de localisation
-     * @return ville
+     * Récupérer la city de localisation
+     * @return city
      */
-    public String getVille() {
-        return ville;
+    public String getCity() {
+        return city;
     }
 
     /**
-     * Modifier la ville de localisation
-     * @param ville 
+     * Modifier la city de localisation
+     * @param city 
      */
-    public void setVille(String ville) {
-        this.ville = ville;
+    public void setCity(String city) {
+        this.city = city;
     }
     
     /**
-     * Récupérer le pays de localisation
-     * @return pays
+     * Récupérer le country de localisation
+     * @return country
      */
-    public String getPays() {
-        return pays;
+    public String getCountry() {
+        return country;
     }
 
     /**
-     * Modifier le pays de localisation
-     * @param pays 
+     * Modifier le country de localisation
+     * @param country 
      */
-    public void setPays(String pays) {
-        this.pays = pays;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     /**
