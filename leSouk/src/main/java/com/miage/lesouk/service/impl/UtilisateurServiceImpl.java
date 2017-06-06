@@ -8,7 +8,6 @@ package com.miage.lesouk.service.impl;
 import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.repository.UtilisateurRepository;
-import com.miage.lesouk.securityComponents.UserCredential;
 import com.miage.lesouk.service.AnnonceService;
 import com.miage.lesouk.service.UtilisateurService;
 import java.util.Collections;
@@ -31,7 +30,7 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     private UtilisateurRepository utilisateurRepository;
     
     @Override
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("isAuthenticated()")
     public Utilisateur getUtilisateur(Integer idU) {
         Utilisateur u = utilisateurRepository.findById(idU);
     //    u.setAnnoncesCreees(annonceService.getAnnoncesCreees(idU));
@@ -48,19 +47,19 @@ public class UtilisateurServiceImpl implements UtilisateurService{
     }
 
     @Override
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("isAuthenticated()")
     public List<Annonce> getAnnoncesCreees(Integer idUCreateur) {
         return annonceService.getAnnoncesCreees(idUCreateur);
     }
 
     @Override
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("isAuthenticated()")
     public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat) {
         return annonceService.getAnnoncesCandidatees(idUCandidat);
     }
 
     @Override
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("isAuthenticated()")
     public Utilisateur createUtilisateur(Utilisateur u) {
         return utilisateurRepository.save(u);
     }

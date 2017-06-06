@@ -54,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
             .and()
             .authorizeRequests()
-            .antMatchers(HttpMethod.GET, "/", "/api/seConnecter", "/index.html", "/views/main.html", "/app.js", "/bower_components/**", "/templates/**", "/css/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/", "/api/seConnecter", "/index.html", "/views/main.html", "/views/pageDeGarde.html", "/app.js", "/bower_components/**", "/templates/**", "/css/**").permitAll()
             .antMatchers("/api/utilisateurs/**", "/api/annonces/**").authenticated()
             .anyRequest().denyAll()
             .and()

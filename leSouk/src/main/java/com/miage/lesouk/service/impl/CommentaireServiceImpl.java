@@ -30,7 +30,7 @@ public class CommentaireServiceImpl implements CommentaireService{
      * @return          le commentaire créé
      */
     @Override
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("isAuthenticated()")
     public Commentaire createCommentaire(int idU, int idA, String texte, Date date) {
         Commentaire commentaire = new Commentaire(idA, idU, texte, date);
         commentaireRepository.save(commentaire);
@@ -43,7 +43,7 @@ public class CommentaireServiceImpl implements CommentaireService{
      * @return          liste d'annonce
      */
     @Override
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("isAuthenticated()")
     public List<Commentaire> getCommentairesByIdA(Integer idA) {
         List<Commentaire> listCommentaires = commentaireRepository.findByIdA(idA);
         Collections.sort(listCommentaires, Collections.reverseOrder());
