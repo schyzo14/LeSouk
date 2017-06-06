@@ -48,7 +48,7 @@ public class UtilisateurController {
     }
     
     @GetMapping("user/{pseudoU}")
-    public UserCredential getUtilisateurByPseudo(@PathVariable String pseudoU) {
+    public Utilisateur getUtilisateurByPseudo(@PathVariable String pseudoU) {
         return utilService.getUtilisateurByPseudo(pseudoU);
     }
     

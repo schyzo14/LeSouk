@@ -3,7 +3,10 @@ package com.miage.lesouk.entite;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.miage.lesouk.interfacepublic.ParticipantPublic;
 import com.miage.lesouk.interfacepublic.UtilisateurPublic;
+import com.miage.lesouk.securityComponents.UserCredential;
 import java.util.List;
+import java.util.Set;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -43,6 +46,9 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     @JsonIgnoreProperties({"createur", "candidat"})
     private List<Annonce> annoncesCandidatees;
 
+        @ElementCollection
+    private Set<String> roles;
+        
     /**
      * Constructeur par défaut
      */
@@ -247,5 +253,22 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
      */
     public void setAnnoncesCandidatees(List<Annonce> annoncesCandidatees) {
         this.annoncesCandidatees = annoncesCandidatees;
+    }
+    
+    
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public boolean containsRole(String r) {
+        return roles.contains(r);
+    }
+
+    public boolean addRole(String r) {
+        return roles.add(r);
+    }
+
+    public boolean removeRole(String r) {
+        return roles.remove(r);
     }
 }

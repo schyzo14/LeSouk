@@ -17,7 +17,7 @@ import java.util.List;
  */
 public interface UtilisateurService {
     public Utilisateur getUtilisateur(Integer idU);
-    public UserCredential getUtilisateurByPseudo(String pseudo);
+    public Utilisateur getUtilisateurByPseudo(String pseudo);
     public List<Annonce> getAnnoncesCreees(Integer idUCreateur);
     public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat);
     public Utilisateur createUtilisateur(Utilisateur u);

@@ -6,11 +6,14 @@ import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.repository.CommentaireRepository;
 import com.miage.lesouk.repository.UtilisateurRepository;
+import java.util.Base64;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * Initialisation des données de test
@@ -40,13 +43,14 @@ public class LesoukApplication implements CommandLineRunner {
         System.out.println("---- Suppression de tous les utilisateurs ----");
         utilisateurRepository.deleteAll();
         System.out.println("---- Ajout des utilisateurs ----");
-        Utilisateur utilisateur1 = new Utilisateur("Fabarez", "Manon", "simplette", "simplette@bordeaux.fr", "s123", "bordeaux", "france");
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        Utilisateur utilisateur1 = new Utilisateur("Fabarez", "Manon", "simplette", "simplette@bordeaux.fr", passwordEncoder.encode("s123"), "bordeaux", "france");
         utilisateurRepository.save(utilisateur1);
-        Utilisateur utilisateur2 = new Utilisateur("Darrab", "Youssef", "dormeur", "dormeur@maroc.fr", "d123", "tournefeuille", "france");
+        Utilisateur utilisateur2 = new Utilisateur("Darrab", "Youssef", "dormeur", "dormeur@maroc.fr", passwordEncoder.encode("d123"), "tournefeuille", "france");
         utilisateurRepository.save(utilisateur2);
-        Utilisateur utilisateur3 = new Utilisateur("Queille", "Aurore", "grincheuse", "grincheuse@toulouse.fr", "g123", "toulouse", "france");
+        Utilisateur utilisateur3 = new Utilisateur("Queille", "Aurore", "grincheuse", "grincheuse@toulouse.fr", passwordEncoder.encode("g123"), "toulouse", "france");
         utilisateurRepository.save(utilisateur3);
-        Utilisateur utilisateur4 = new Utilisateur("Vierge", "User", "vierge", "vierge@user.fr", "v123", "paris", "france");
+        Utilisateur utilisateur4 = new Utilisateur("Vierge", "User", "vierge", "vierge@user.fr", passwordEncoder.encode("v123"), "paris", "france");
         utilisateurRepository.save(utilisateur4);
         System.out.println("---- Données insérées (FindAll) ----");
         for (Utilisateur utilisateur : utilisateurRepository.findAll()) {

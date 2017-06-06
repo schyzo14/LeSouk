@@ -2,8 +2,6 @@ package com.miage.lesouk.securityComponents;
 
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.repository.UtilisateurRepository;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.HashSet;
 import java.util.Set;
 import javax.transaction.Transactional;
@@ -30,7 +28,7 @@ public class AuthentificationService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String pseudo) throws UsernameNotFoundException {
 
-        UserCredential utilisateur = this.utilisateurRepository.findByPseudo(pseudo);
+        Utilisateur utilisateur = this.utilisateurRepository.findByPseudo(pseudo);
         
         if(utilisateur == null){
             throw new UsernameNotFoundException("Pseudo not found : " + pseudo);
@@ -42,7 +40,7 @@ public class AuthentificationService implements UserDetailsService {
             authorities.add(authority);
         }
         
-        return new User(pseudo, utilisateur.getPassword(), authorities);
+        return new User(pseudo, utilisateur.getMdp(), authorities);
     }
     
 }
