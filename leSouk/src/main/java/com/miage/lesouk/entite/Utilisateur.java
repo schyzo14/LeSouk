@@ -70,8 +70,6 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
         this.mdp = mdp;
         this.country = pays;
         this.city = ville;
-        this.country = country;
-        this.city = city;
     }
 
     /**
