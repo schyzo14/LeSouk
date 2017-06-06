@@ -2,6 +2,7 @@ package com.miage.lesouk.repository;
 
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.interfacepublic.UtilisateurPublic;
+import com.miage.lesouk.securityComponents.UserCredential;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
@@ -28,7 +29,7 @@ public interface UtilisateurRepository extends PagingAndSortingRepository<Utilis
          * @param pseudo
          * @return Utilisateur
          */
-        public Utilisateur findByPseudo(String pseudo);
+        public UserCredential findByPseudo(String pseudo);
                 
         /**
          * Chercher un utilisateur par son mail

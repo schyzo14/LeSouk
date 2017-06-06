@@ -8,6 +8,7 @@ import com.miage.lesouk.repository.UtilisateurRepository;
 import com.miage.lesouk.securityComponents.AuthentificationService;
 import com.miage.lesouk.service.AnnonceService;
 import com.miage.lesouk.service.UtilisateurService;
+import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -39,9 +40,9 @@ public class AuthentificationController {
      * POST http://localhost:8080/api/seConnecter
      * @return 
      */
-   @PostMapping
-    public UserDetails seConnecter(@RequestBody String data) {
-        return authentificationService.loadUserByUsername(data);
+    @GetMapping("")
+    public Principal user(Principal user){
+        return user;
     }
     
 }

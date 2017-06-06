@@ -8,6 +8,7 @@ package com.miage.lesouk.service;
 import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.interfacepublic.UtilisateurPublic;
+import com.miage.lesouk.securityComponents.UserCredential;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ import java.util.List;
  */
 public interface UtilisateurService {
     public Utilisateur getUtilisateur(Integer idU);
-    public Utilisateur getUtilisateurByPseudo(String pseudo);
+    public UserCredential getUtilisateurByPseudo(String pseudo);
     public List<Annonce> getAnnoncesCreees(Integer idUCreateur);
     public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat);
     public Utilisateur createUtilisateur(Utilisateur u);

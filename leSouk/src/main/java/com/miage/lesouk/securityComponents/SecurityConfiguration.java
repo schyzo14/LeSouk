@@ -45,16 +45,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {      
         http
+            .httpBasic()
+            .authenticationEntryPoint(new Http403ForbiddenEntryPoint())
+            .and()
+            .logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
+            .and()
+            .csrf()
+            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+            .and()
             .authorizeRequests()
-            .antMatchers(HttpMethod.GET, "/index.html", "/app.js", "/bower_components/**", "/templates/**", "/css/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/", "/index.html", "/app.js", "/bower_components/**", "/templates/**", "/css/**").permitAll()
             .antMatchers(HttpMethod.POST, "/api/seConnecter").permitAll()
-            .antMatchers("/api/utilisateurs/**", "/api/annonces/**").hasRole("USER")
+            .antMatchers("/api/utilisateurs/**", "/api/annonces/**").authenticated()
             .anyRequest().denyAll()
             .and()
             .rememberMe()
-            .alwaysRemember(true)
-            .and()
-            .csrf().disable();
+            .alwaysRemember(true);
         
     }
 

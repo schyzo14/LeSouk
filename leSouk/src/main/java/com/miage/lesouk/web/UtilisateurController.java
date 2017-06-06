@@ -5,6 +5,7 @@ import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.interfacepublic.UtilisateurPublic;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.repository.UtilisateurRepository;
+import com.miage.lesouk.securityComponents.UserCredential;
 import com.miage.lesouk.service.AnnonceService;
 import com.miage.lesouk.service.UtilisateurService;
 import java.util.List;
@@ -47,7 +48,7 @@ public class UtilisateurController {
     }
     
     @GetMapping("user/{pseudoU}")
-    public UtilisateurPublic getUtilisateurByPseudo(@PathVariable String pseudoU) {
+    public UserCredential getUtilisateurByPseudo(@PathVariable String pseudoU) {
         return utilService.getUtilisateurByPseudo(pseudoU);
     }
     

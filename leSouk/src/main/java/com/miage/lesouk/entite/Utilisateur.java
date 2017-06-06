@@ -1,22 +1,13 @@
 package com.miage.lesouk.entite;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.miage.lesouk.interfacepublic.ParticipantPublic;
 import com.miage.lesouk.interfacepublic.UtilisateurPublic;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 /**
  * Entité Utilisateur
@@ -51,16 +42,12 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     @OneToMany(targetEntity=Annonce.class, mappedBy="candidat")
     @JsonIgnoreProperties({"createur", "candidat"})
     private List<Annonce> annoncesCandidatees;
-    // role pour l'authentification
-    @ElementCollection
-    private Set<String> roles;
 
     /**
      * Constructeur par défaut
      */
     public Utilisateur() {
         this.id2 = id;
-        this.roles = new HashSet<>();
     }
 
     /**
@@ -83,8 +70,6 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
         this.mdp = mdp;
         this.pays = pays;
         this.ville = ville;
-        this.roles = new HashSet<>();
-        addRole("USER");
     }
 
     /**
@@ -263,40 +248,4 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     public void setAnnoncesCandidatees(List<Annonce> annoncesCandidatees) {
         this.annoncesCandidatees = annoncesCandidatees;
     }
-    
-    /**
-     * Récupérer les roles
-     * @return  roles
-     */
-    public Set<String> getRoles() {
-        return roles;
-    }
-
-    /**
-     * Contient un role ?
-     * @param       role
-     * @return      yes/no
-     */
-    public boolean containsRole(String role) {
-        return roles.contains(role);
-    }
-
-    /**
-     * Ajouter un role
-     * @param       role
-     * @return      ajout réussit ?
-     */
-    public boolean addRole(String role) {
-        return roles.add(role);
-    }
-
-    /**
-     * Supprimer un role
-     * @param       role
-     * @return      ok
-     */
-    public boolean removeRole(String role) {
-        return roles.remove(role);
-    }
-
 }
