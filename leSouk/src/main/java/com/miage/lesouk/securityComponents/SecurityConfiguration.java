@@ -49,6 +49,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authenticationEntryPoint(new Http403ForbiddenEntryPoint())
             .and()
             .logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
+            .deleteCookies("JSESSIONID")
+            .invalidateHttpSession(true)     
             .and()
             .csrf().disable()
             .authorizeRequests()
