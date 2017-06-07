@@ -3,7 +3,6 @@ package com.miage.lesouk.entite;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.miage.lesouk.interfacepublic.ParticipantPublic;
 import com.miage.lesouk.interfacepublic.UtilisateurPublic;
-import com.miage.lesouk.securityComponents.UserCredential;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.ElementCollection;

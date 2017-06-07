@@ -1,14 +1,8 @@
 package com.miage.lesouk.web;
 
-import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Utilisateur;
-import com.miage.lesouk.interfacepublic.UtilisateurPublic;
-import com.miage.lesouk.repository.AnnonceRepository;
-import com.miage.lesouk.repository.UtilisateurRepository;
-import com.miage.lesouk.securityComponents.UserCredential;
 import com.miage.lesouk.service.AnnonceService;
 import com.miage.lesouk.service.UtilisateurService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

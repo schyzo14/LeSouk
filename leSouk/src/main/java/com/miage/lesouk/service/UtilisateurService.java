@@ -7,8 +7,6 @@ package com.miage.lesouk.service;
 
 import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Utilisateur;
-import com.miage.lesouk.interfacepublic.UtilisateurPublic;
-import com.miage.lesouk.securityComponents.UserCredential;
 import java.util.List;
 
 /**

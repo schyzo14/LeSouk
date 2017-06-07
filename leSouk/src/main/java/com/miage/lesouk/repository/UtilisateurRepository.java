@@ -1,8 +1,6 @@
 package com.miage.lesouk.repository;
 
 import com.miage.lesouk.entite.Utilisateur;
-import com.miage.lesouk.interfacepublic.UtilisateurPublic;
-import com.miage.lesouk.securityComponents.UserCredential;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
