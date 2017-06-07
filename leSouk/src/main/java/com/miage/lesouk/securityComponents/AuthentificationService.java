@@ -21,26 +21,40 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthentificationService implements UserDetailsService {
     
+    // Repository de Utilisateur
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
+    /**
+     * Chargement de l'utilisateur pour l'authentification
+     * @param pseudo                        pseudo de connexion
+     * @return                              UserDetails
+     * @throws UsernameNotFoundException    L'utilisateur n'existe pas
+     */
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String pseudo) throws UsernameNotFoundException {
 
+        // Récupération de l'utilisateur avec son pseudo
         Utilisateur utilisateur = this.utilisateurRepository.findByPseudo(pseudo);
         
+        // Si l'utilisateur n'existe pas, il ne peut pas se connecter
         if(utilisateur == null){
+            // Exception pour un Pseudo inconnu
             throw new UsernameNotFoundException("Pseudo not found : " + pseudo);
         }
         
+        // Récupération des roles de l'utilisateur
         Set<GrantedAuthority> authorities = new HashSet<>();
+        // Pour chaque role, on les ajoute dans les Authorities
         for(String role : utilisateur.getRoles()){
+            // Création des roles sous la forme Authority
             SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + role);
+            // Ajout de l'Authority
             authorities.add(authority);
         }
         
+        // Retourne un User avec son pseudo, son mdp et ses Authorities
         return new User(pseudo, utilisateur.getMdp(), authorities);
     }
-    
 }

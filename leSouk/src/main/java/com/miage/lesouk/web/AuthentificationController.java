@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @CrossOrigin
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/seConnecter")
 public class AuthentificationController {
     
     // Service de Utilisateur
@@ -30,9 +30,8 @@ public class AuthentificationController {
      * POST http://localhost:8080/api/seConnecter
      * @return 
      */
-    @GetMapping("seConnecter")
+    @GetMapping
     public Principal user(Principal user){
         return user;
-    }
-    
+    }   
 }

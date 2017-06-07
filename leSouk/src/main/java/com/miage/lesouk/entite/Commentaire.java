@@ -3,7 +3,6 @@ package com.miage.lesouk.entite;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import org.springframework.data.annotation.Id;
-
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -40,13 +39,23 @@ public class Commentaire implements Comparable<Commentaire>{
         this.dateCreation = dateCreation;
     }
     
+    /**
+     * Constructeur d'un commentaire
+     * @param idA           Id de l'annonce
+     * @param idU           Id de l'utilisateur
+     * @param texte         Texte du commentaire
+     */
     public Commentaire(int idA, int idU, String texte) {
         this.idA = idA;
         this.idU = idU;
         this.texte = texte;
+        // Date du jour
         this.dateCreation = new Date();
     }
     
+    /**
+     * Constructeur par défaut
+     */
     public Commentaire() {
     }
 

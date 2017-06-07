@@ -32,8 +32,11 @@ public class CommentaireServiceImpl implements CommentaireService{
     @Override
     @PreAuthorize("isAuthenticated()")
     public Commentaire createCommentaire(int idU, int idA, String texte, Date date) {
+        // Construction du Commentaire
         Commentaire commentaire = new Commentaire(idA, idU, texte, date);
+        // Enregistrement du commentaire dans la BD
         commentaireRepository.save(commentaire);
+        // Retourne le commentaire créé
         return commentaire;
     }
 
@@ -45,9 +48,11 @@ public class CommentaireServiceImpl implements CommentaireService{
     @Override
     @PreAuthorize("isAuthenticated()")
     public List<Commentaire> getCommentairesByIdA(Integer idA) {
+        // Récupération des commentaires pour une annonce idA auprès de la BD
         List<Commentaire> listCommentaires = commentaireRepository.findByIdA(idA);
+        // Tri des annonces par date décroissante
         Collections.sort(listCommentaires, Collections.reverseOrder());
+        // Retourne la liste des commentaires
         return listCommentaires;
     }
-    
 }
