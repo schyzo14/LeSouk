@@ -27,15 +27,6 @@ public class UtilisateurController {
     @Autowired
     private AnnonceService annonceService;
     
-    /**
-     * GET http://localhost:8080/api/lesouk/utilisateurs
-     * @return 
-     */
-    /*@GetMapping
-    public Iterable<Utilisateur> findUtilisateurs() {
-        return this.utilService.findAll();
-    }*/
-    
     @GetMapping("{idU}")
     public Utilisateur getUtilisateur(@PathVariable Integer idU) {
         return utilService.getUtilisateur(idU);
@@ -46,15 +37,4 @@ public class UtilisateurController {
         return utilService.getUtilisateurByPseudo(pseudoU);
     }
     
-    /*
-    @GetMapping("{idU}/annoncesCrees")
-    public List<Annonce> getAnnoncesCrees(@PathVariable Integer idU) {
-        return annonceService.getAnnoncesCreees(idU);
-    }
-    
-    @GetMapping("{idU}/annoncesCandidatees")
-    public List<Annonce> getAnnoncesCandidatees(@PathVariable Integer idU) {
-        return annonceService.getAnnoncesCandidatees(idU);
-    }
-    */
 }
