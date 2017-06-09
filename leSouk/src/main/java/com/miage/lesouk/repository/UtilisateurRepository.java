@@ -8,13 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * @author Youssef DARRAB - Manon FABAREZ - Aurore QUEILLE
  */
 public interface UtilisateurRepository extends PagingAndSortingRepository<Utilisateur, Integer> {
-    
-        /**
-         * Récupère tous les utilisateurs
-         * @return      liste de tous utilisateurs
-         */
-        public Iterable<Utilisateur> findAll();
-        
+            
         /**
          * Chercher un utilisateur par son id
          * @param idU
@@ -28,11 +22,4 @@ public interface UtilisateurRepository extends PagingAndSortingRepository<Utilis
          * @return Utilisateur
          */
         public Utilisateur findByPseudo(String pseudo);
-                
-        /**
-         * Chercher un utilisateur par son mail
-         * @param mail
-         * @return Utilisateur
-         */
-        public Utilisateur findByMail(String mail);
 }

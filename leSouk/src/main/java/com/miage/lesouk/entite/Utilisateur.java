@@ -254,19 +254,37 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
         this.annoncesCandidatees = annoncesCandidatees;
     }
     
-    
+    /**
+     * Récupérer le rôle de l'utilisateur 
+     * @return roles
+     */
     public Set<String> getRoles() {
         return roles;
     }
 
+    /**
+     * Cherche un rôle dans la liste des rôles
+     * @param r
+     * @return true/false
+     */
     public boolean containsRole(String r) {
         return roles.contains(r);
     }
 
+    /**
+     * Ajouter un rôle
+     * @param r
+     * @return true/false
+     */
     public boolean addRole(String r) {
         return roles.add(r);
     }
 
+    /**
+     * Supprimer un rôle
+     * @param r
+     * @return true/false
+     */
     public boolean removeRole(String r) {
         return roles.remove(r);
     }

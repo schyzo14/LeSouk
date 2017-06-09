@@ -8,11 +8,10 @@ package com.miage.lesouk.service;
 import com.miage.lesouk.entite.Utilisateur;
 
 /**
- *
+ * Service de Utilisateur
  * @author Youssef DARRAB - Manon FABAREZ - Aurore QUEILLE
  */
 public interface UtilisateurService {
     public Utilisateur getUtilisateur(Integer idU);
     public Utilisateur getUtilisateurByPseudo(String pseudo);
-    public Utilisateur createUtilisateur(Utilisateur u);
 }

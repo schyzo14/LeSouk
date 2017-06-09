@@ -6,7 +6,7 @@
 package com.miage.lesouk.interfacepublic;
 
 /**
- *
+ * Interface UtilisateurPublic
  * @author Youssef DARRAB - Manon FABAREZ - Aurore QUEILLE
  */
 public interface UtilisateurPublic {

@@ -66,7 +66,7 @@ public class AnnonceServiceImpl implements AnnonceService {
         }
         utilisateur.getAnnoncesCreees().add(annonce);
         
-        utilisateurService.createUtilisateur(utilisateur);
+        //utilisateurService.createUtilisateur(utilisateur);
         return annonceRepository.save(annonce);
     }
 
@@ -87,7 +87,7 @@ public class AnnonceServiceImpl implements AnnonceService {
         }
         utilisateur.getAnnoncesCandidatees().add(annonce);
         
-        utilisateurService.createUtilisateur(utilisateur);
+        //utilisateurService.createUtilisateur(utilisateur);
         return annonceRepository.save(annonce);
     }
 

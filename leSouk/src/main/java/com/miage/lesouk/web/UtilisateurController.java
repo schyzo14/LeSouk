@@ -1,7 +1,6 @@
 package com.miage.lesouk.web;
 
 import com.miage.lesouk.entite.Utilisateur;
-import com.miage.lesouk.service.AnnonceService;
 import com.miage.lesouk.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,15 +22,23 @@ public class UtilisateurController {
     @Autowired
     private UtilisateurService utilService;
     
-    //Service de Annonce
-    @Autowired
-    private AnnonceService annonceService;
-    
+    /**
+     * Récupérer les informations d'un Utilisateur
+     * GET http://localhost:8080/api/utilisateurs/
+     * @param idU
+     * @return Utilisateur
+     */
     @GetMapping("{idU}")
     public Utilisateur getUtilisateur(@PathVariable Integer idU) {
         return utilService.getUtilisateur(idU);
     }
     
+    /**
+     * Récupérer les informations d'un Utilisateur à partir de son pseudo
+     * GET http://localhost:8080/api/utilisateurs/user/
+     * @param pseudoU
+     * @return Utilisateur
+     */
     @GetMapping("user/{pseudoU}")
     public Utilisateur getUtilisateurByPseudo(@PathVariable String pseudoU) {
         return utilService.getUtilisateurByPseudo(pseudoU);

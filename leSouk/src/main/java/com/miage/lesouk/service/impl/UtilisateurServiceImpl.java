@@ -16,12 +16,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService{
     
-    @Autowired
-    private AnnonceService annonceService;
-    
+    //Repository d'Utilisateur
     @Autowired
     private UtilisateurRepository utilisateurRepository;
     
+    /**
+     * Récupérer les informations d'un Utilisateur
+     * @param idU
+     * @return Utilisateur
+     */
     @Override
     @PreAuthorize("isAuthenticated()")
     public Utilisateur getUtilisateur(Integer idU) {
@@ -32,14 +35,13 @@ public class UtilisateurServiceImpl implements UtilisateurService{
         return u;
     }
     
+    /**
+     * Récupérer les informations d'un Utilisateur à partir de son pseudo
+     * @param pseudo
+     * @return Utilisateur
+     */
     @Override
     public Utilisateur getUtilisateurByPseudo(String pseudo) {
         return utilisateurRepository.findByPseudo(pseudo);
-    }
-
-    @Override
-    @PreAuthorize("isAuthenticated()")
-    public Utilisateur createUtilisateur(Utilisateur u) {
-        return utilisateurRepository.save(u);
     }
 }
