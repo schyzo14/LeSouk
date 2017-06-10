@@ -5,8 +5,6 @@ import java.util.List;
 
 public interface AnnonceService {
     public Annonce getAnnonce(Integer idA);
-    public List<Annonce> getAnnoncesCreees(Integer idUCreateur);
-    public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat);
     public List<Annonce> getAnnonces(Integer idU, String motsCles);
     public Annonce creerAnnonce(String nomA, String descriptionA, Double prixA,
             Integer idUCreateur);

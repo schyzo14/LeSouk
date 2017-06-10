@@ -19,20 +19,6 @@ public interface AnnonceRepository extends PagingAndSortingRepository<Annonce, I
     public Annonce findByIdA(Integer idA);
     
     /**
-     * Chercher les annonces d'une personne
-     * @param createur
-     * @return List Annonce
-     */
-    public List<Annonce> findBycreateur(Utilisateur createur);
-    
-    /**
-     * Chercher les annonces d'un candidat
-     * @param candidat
-     * @return List Annonce
-     */
-    public List<Annonce> findByCandidat(Utilisateur candidat);
-    
-    /**
      * Chercher les annonces par mot-clé
      * @param idU
      * @param motscles

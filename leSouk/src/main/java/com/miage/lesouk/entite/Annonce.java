@@ -3,6 +3,7 @@ package com.miage.lesouk.entite;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -66,7 +67,7 @@ public class Annonce implements Serializable, Comparable<Annonce> {
     
     /** commentaires */
     @Transient
-    private List<Commentaire> listeCommentaires;
+    private List<Commentaire> listeCommentaires = new ArrayList<Commentaire>();
 
     /**
      * Constructeur par défaut

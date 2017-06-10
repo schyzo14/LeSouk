@@ -1,6 +1,7 @@
 package com.miage.lesouk.service.impl;
 
 import com.miage.lesouk.entite.Annonce;
+import com.miage.lesouk.entite.Commentaire;
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.service.AnnonceService;
@@ -43,28 +44,6 @@ public class AnnonceServiceImpl implements AnnonceService {
         a.setListeCommentaires(commentaireService.getCommentairesByIdA(idA));
         
         return a;
-    }
-
-    /**
-     * Récupérer les anonnces d'un utilisateur
-     * @param idUCreateur
-     * @return liste d'annonces
-     */
-    @Override
-    @PreAuthorize("isAuthenticated()")
-    public List<Annonce> getAnnoncesCreees(Integer idUCreateur) {
-        return annonceRepository.findBycreateur(utilisateurService.getUtilisateur(idUCreateur));
-    }
-
-    /**
-     * Récupérer les annonces auxquelles un utilisateur a candidaté
-     * @param idUCandidat
-     * @return liste d'annonces
-     */
-    @Override
-    @PreAuthorize("isAuthenticated()")
-    public List<Annonce> getAnnoncesCandidatees(Integer idUCandidat) {
-        return annonceRepository.findByCandidat(utilisateurService.getUtilisateur(idUCandidat));
     }
 
     /**
@@ -165,16 +144,11 @@ public class AnnonceServiceImpl implements AnnonceService {
     @Override
     @PreAuthorize("isAuthenticated()")
     public Annonce commenterAnnonce(Integer idA, Integer idUser, String texte) {
-        //Récupération de l'annonce
-        Annonce annonce = annonceRepository.findByIdA(idA);
-        
         //Création du commentaire
         commentaireService.createCommentaire(idUser, idA, texte, new Date());
         
-        //Création de la liste des commentaires de l'annonce
-        annonce.setListeCommentaires(commentaireService.getCommentairesByIdA(idA));
-        
-        return annonceRepository.save(annonce);
+        //Récupération de l'annonce
+        return getAnnonce(idA);
     }
     
 }
