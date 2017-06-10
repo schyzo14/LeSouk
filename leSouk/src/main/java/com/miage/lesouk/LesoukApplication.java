@@ -119,7 +119,7 @@ public class LesoukApplication implements CommandLineRunner {
         
         System.out.println("---- Données insérées (FindAll) ----");
         for (Annonce annonce : annonceRepository.findAll()) {
-                System.out.println("id : " + annonce.getIdA() + " - Nom : " + annonce.getNomA() + " - description : " + annonce.getDescriptionA() + " - prix : " + annonce.getPrixA() + " - Id créateur : " + annonce.getCreateur() + " - Date Création : " + annonce.getDateCreaA() + " - Id Candidat : " + annonce.getCandidat() + " - Prix candidat : " + annonce.getPrixCandidat() + " - Date Candidat : " + annonce.getDateCandidat() + " - Etat : " + annonce.getEtatA());
+                System.out.println("id : " + annonce.getIdA() + " - Nom : " + annonce.getNomA() + " - description : " + annonce.getDescriptionA() + " - prix : " + annonce.getPrixA() + " - Créateur : " + annonce.getCreateur().getPseudo() + " - Date Création : " + annonce.getDateCreaA() + " - Candidat : " + ((annonce.getCandidat()==null) ? null : annonce.getCandidat().getPseudo()) + " - Prix candidat : " + annonce.getPrixCandidat() + " - Date Candidat : " + annonce.getDateCandidat() + " - Etat : " + annonce.getEtatA());
         }
         
         System.out.println("---- Fin de l'initialisation de Annonces ----");
