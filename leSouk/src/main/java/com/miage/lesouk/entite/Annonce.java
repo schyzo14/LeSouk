@@ -1,19 +1,18 @@
 package com.miage.lesouk.entite;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 import javax.persistence.Transient;
 
 /**
@@ -39,19 +38,19 @@ public class Annonce implements Serializable, Comparable<Annonce> {
     
     /** date creation Annonce */
     @JsonFormat(pattern="dd-MM-yyyy")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateCreaA;
     
     /** etat Annonce */
     private String etatA; //à améliorer avec une enum
     
-    /** id Createur */
- //   private Integer idUCreateur;
+    /** createur */
     @ManyToOne
     @JoinColumn(name="id")
     @JsonIgnoreProperties({"annoncesCandidatees", "annoncesCreees"})
     private Utilisateur createur;
     
-    /** id Candidat */
+    /** candidat */
     @ManyToOne
     @JoinColumn(name="id2")
     @JsonIgnoreProperties({"annoncesCandidatees", "annoncesCreees"})
@@ -62,15 +61,26 @@ public class Annonce implements Serializable, Comparable<Annonce> {
     
     /** date creation Annonce */
     @JsonFormat(pattern="dd-MM-yyyy")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateCandidat;
     
     /** commentaires */
     @Transient
     private List<Commentaire> listeCommentaires;
 
+    /**
+     * Constructeur par défaut
+     */
     public Annonce() {
     }
     
+    /**
+     * Constructeur classe Annonce
+     * @param nomA
+     * @param descriptionA
+     * @param prixA
+     * @param UCreateur 
+     */
     public Annonce(String nomA, String descriptionA, Double prixA, Utilisateur UCreateur) {
         this.nomA = nomA;
         this.descriptionA = descriptionA;
@@ -82,6 +92,14 @@ public class Annonce implements Serializable, Comparable<Annonce> {
         this.etatA = "Active";
     }
 
+    /**
+     * Constructeur classe Annonce
+     * @param nomA
+     * @param descriptionA
+     * @param prixA
+     * @param UCreateur
+     * @param dateCrea 
+     */
     public Annonce(String nomA, String descriptionA, Double prixA, Utilisateur UCreateur, Date dateCrea) {
         this.nomA = nomA;
         this.descriptionA = descriptionA;
@@ -89,7 +107,7 @@ public class Annonce implements Serializable, Comparable<Annonce> {
         this.createur = UCreateur;
         this.dateCreaA = dateCrea;
         
-        // paramètres par défaut
+        // paramètre par défaut
         this.etatA = "Active";
     }
     

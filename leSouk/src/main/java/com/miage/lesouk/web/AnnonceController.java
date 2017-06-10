@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Classe AnnonceController
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("api/annonces")
@@ -21,32 +24,65 @@ public class AnnonceController {
     @Autowired
     public AnnonceService annonceService;
     
+    /**
+     * Récupération de l'annonce par l'id
+     * @param idA
+     * @return l'annonce
+     */
     @GetMapping("{idA}")
     public Annonce getAnnonce(@PathVariable Integer idA) {
         return annonceService.getAnnonce(idA);
     }
     
+    /**
+     * Recherche d'annonces
+     * @param idU
+     * @param motsCles
+     * @return liste d'annonces trouvées
+     */
     @GetMapping("rechercher/{idU}/{motsCles}")
     public List<Annonce> getAnnonces(@PathVariable Integer idU, @PathVariable String motsCles) {
         return annonceService.getAnnonces(idU, motsCles);
     }
     
+    /**
+     * Créer annonce
+     * @param annonce
+     * @return l'annonce
+     */
     @PostMapping
     public Annonce postAnnonce(@RequestBody Annonce annonce) {
         return annonceService.creerAnnonce(annonce.getNomA(), annonce.getDescriptionA(), annonce.getPrixA(),
                 annonce.getCreateur().getId());
     }
     
+    /**
+     * Candidater à une annonce
+     * @param idA
+     * @param annonce
+     * @return l'annonce
+     */
     @PutMapping("candidater/{idA}")
     public Annonce putAnnonceCandidater(@PathVariable Integer idA, @RequestBody Annonce annonce) {
         return annonceService.candidaterAnnonce(idA, annonce.getCandidat().getId(), annonce.getPrixCandidat());
     }
     
+    /**
+     * Cloturer une annonce
+     * @param idA
+     * @return l'annonce
+     */
     @PutMapping("cloturer/{idA}")
     public Annonce putAnnonceCloturer(@PathVariable Integer idA) {
         return annonceService.cloturerAnnonce(idA);
     }
     
+    /**
+     * Poster un commentaire
+     * @param idA
+     * @param commentaire
+     * @return l'annonce
+     */
     @PostMapping("{idA}")
     public Annonce postCommentaire(@PathVariable Integer idA, @RequestBody Commentaire commentaire) {
         return annonceService.commenterAnnonce(idA, commentaire.getIdU(), commentaire.getTexte());
