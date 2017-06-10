@@ -1,7 +1,6 @@
 package com.miage.lesouk.repository;
 
 import com.miage.lesouk.entite.Annonce;
-import com.miage.lesouk.entite.Utilisateur;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;

@@ -1,7 +1,6 @@
 package com.miage.lesouk.service.impl;
 
 import com.miage.lesouk.entite.Annonce;
-import com.miage.lesouk.entite.Commentaire;
 import com.miage.lesouk.entite.Utilisateur;
 import com.miage.lesouk.repository.AnnonceRepository;
 import com.miage.lesouk.service.AnnonceService;
