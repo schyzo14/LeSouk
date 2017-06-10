@@ -55,10 +55,9 @@ public class AnnonceServiceImpl implements AnnonceService {
     @PreAuthorize("isAuthenticated()")
     public Annonce creerAnnonce(String nomA, String descriptionA, Double prixA, Integer idUCreateur) {
 
-        Utilisateur UCreateur = utilisateurService.getUtilisateur(idUCreateur);
-                
-        Annonce annonce = new Annonce(nomA, descriptionA, prixA, UCreateur);
         Utilisateur utilisateur = utilisateurService.getUtilisateur(idUCreateur);
+                
+        Annonce annonce = new Annonce(nomA, descriptionA, prixA, utilisateur);
         
         if(utilisateur.getAnnoncesCreees() == null) {
             List<Annonce> annoncesCreees = new ArrayList<Annonce>();
