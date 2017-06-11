@@ -1,7 +1,7 @@
 package com.miage.lesouk.securityComponents;
 
 import com.miage.lesouk.entite.Utilisateur;
-import com.miage.lesouk.repository.UtilisateurRepository;
+import com.miage.lesouk.service.UtilisateurService;
 import java.util.HashSet;
 import java.util.Set;
 import javax.transaction.Transactional;
@@ -21,9 +21,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthentificationService implements UserDetailsService {
     
-    // Repository de Utilisateur
+    // Service de Utilisateur
     @Autowired
-    private UtilisateurRepository utilisateurRepository;
+    private UtilisateurService utilisateurService;
 
     /**
      * Chargement de l'utilisateur pour l'authentification
@@ -36,7 +36,7 @@ public class AuthentificationService implements UserDetailsService {
     public UserDetails loadUserByUsername(String pseudo) throws UsernameNotFoundException {
 
         // Récupération de l'utilisateur avec son pseudo
-        Utilisateur utilisateur = this.utilisateurRepository.findByPseudo(pseudo);
+        Utilisateur utilisateur = this.utilisateurService.getUtilisateurByPseudo(pseudo);
         
         // Si l'utilisateur n'existe pas, il ne peut pas se connecter
         if(utilisateur == null){
