@@ -58,6 +58,7 @@ public class AnnonceController {
      * @return liste d'annonces trouvées
      */
     @GetMapping("rechercher/{idU}/{motsCles}")
+    @JsonView(VueUtilisateur.Simple.class)
     public List<Annonce> getAnnonces(@PathVariable Integer idU, @PathVariable String motsCles) {
         return annonceService.getAnnonces(idU, motsCles);
     }
@@ -68,6 +69,7 @@ public class AnnonceController {
      * @return l'annonce
      */
     @PostMapping
+    @JsonView(VueUtilisateur.Simple.class)
     public Annonce postAnnonce(@RequestBody Annonce annonce) {
         return annonceService.creerAnnonce(annonce.getNomA(), annonce.getDescriptionA(), annonce.getPrixA(),
                 annonce.getCreateur().getId());
@@ -80,6 +82,7 @@ public class AnnonceController {
      * @return l'annonce
      */
     @PutMapping("candidater/{idA}")
+    @JsonView(VueUtilisateur.Simple.class)
     public Annonce putAnnonceCandidater(@PathVariable Integer idA, @RequestBody Annonce annonce) {
         return annonceService.candidaterAnnonce(idA, annonce.getCandidat().getId(), annonce.getPrixCandidat());
     }
@@ -90,6 +93,7 @@ public class AnnonceController {
      * @return l'annonce
      */
     @PutMapping("cloturer/{idA}")
+    @JsonView(VueUtilisateur.Simple.class)
     public Annonce putAnnonceCloturer(@PathVariable Integer idA) {
         return annonceService.cloturerAnnonce(idA);
     }
@@ -101,6 +105,7 @@ public class AnnonceController {
      * @return l'annonce
      */
     @PostMapping("{idA}")
+    @JsonView(VueUtilisateur.Simple.class)
     public Annonce postCommentaire(@PathVariable Integer idA, @RequestBody Commentaire commentaire) {
         return annonceService.commenterAnnonce(idA, commentaire.getIdU(), commentaire.getTexte());
     }

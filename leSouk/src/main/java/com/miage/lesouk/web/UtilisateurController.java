@@ -43,6 +43,7 @@ public class UtilisateurController {
      * @return Utilisateur
      */
     @GetMapping("user/{pseudoU}")
+    @JsonView(VueUtilisateur.Simple.class)
     public Utilisateur getUtilisateurByPseudo(@PathVariable String pseudoU) {
         return utilService.getUtilisateurByPseudo(pseudoU);
     }

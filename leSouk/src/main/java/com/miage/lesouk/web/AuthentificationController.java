@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthentificationController {
     
     /**
-     * POST http://localhost:8080/api/seConnecter
+     * GET http://localhost:8080/api/seConnecter
      * @return 
      */
     @GetMapping
