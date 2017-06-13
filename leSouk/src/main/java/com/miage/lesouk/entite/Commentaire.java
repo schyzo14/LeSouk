@@ -1,6 +1,8 @@
 package com.miage.lesouk.entite;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.miage.lesouk.interfacepublic.VueUtilisateur;
 import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,15 +16,20 @@ public class Commentaire implements Comparable<Commentaire>{
     
     // Id du commentaire autogénéré
     @Id
+    @JsonView(VueUtilisateur.Simple.class)
     private String idC;
     // Id de l'annonce
+    @JsonView(VueUtilisateur.Simple.class)
     private int idA;
     // Id de l'utilisateur
+    @JsonView(VueUtilisateur.Simple.class)
     private int idU;
     // Texte du commentaire
+    @JsonView(VueUtilisateur.Simple.class)
     private String texte;
     // Date de création du commentaire
     @JsonFormat(pattern="dd-MM-yyyy")
+    @JsonView(VueUtilisateur.Simple.class)
     private Date dateCreation;
 
     /**

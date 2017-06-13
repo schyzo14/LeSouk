@@ -1,10 +1,13 @@
 package com.miage.lesouk.web;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.miage.lesouk.entite.Annonce;
 import com.miage.lesouk.entite.Commentaire;
+import com.miage.lesouk.interfacepublic.VueUtilisateur;
 import com.miage.lesouk.service.AnnonceService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +33,21 @@ public class AnnonceController {
      * @return l'annonce
      */
     @GetMapping("{idA}")
+    @JsonView(VueUtilisateur.Simple.class)
     public Annonce getAnnonce(@PathVariable Integer idA) {
+        return annonceService.getAnnonce(idA);
+    }
+    
+    /**
+     * Récupération de l'annonce par l'id
+     * @param idA
+     * @return l'annonce
+     */
+    @GetMapping("/cloturee/{idA}")
+    @JsonView(VueUtilisateur.Complet.class)
+    @PostAuthorize("returnObject.etatA.equals('Cloturée') and (returnObject.createur.pseudo"
+            + ".equals(authentication.name) or returnObject.candidat.pseudo.equals(authentication.name))")
+    public Annonce getAnnonceCloturee(@PathVariable Integer idA) {
         return annonceService.getAnnonce(idA);
     }
     

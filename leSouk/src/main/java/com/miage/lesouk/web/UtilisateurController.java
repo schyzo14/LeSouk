@@ -1,6 +1,8 @@
 package com.miage.lesouk.web;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.miage.lesouk.entite.Utilisateur;
+import com.miage.lesouk.interfacepublic.VueUtilisateur;
 import com.miage.lesouk.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,6 +31,7 @@ public class UtilisateurController {
      * @return Utilisateur
      */
     @GetMapping("{idU}")
+    @JsonView(VueUtilisateur.Complet.class)
     public Utilisateur getUtilisateur(@PathVariable Integer idU) {
         return utilService.getUtilisateur(idU);
     }

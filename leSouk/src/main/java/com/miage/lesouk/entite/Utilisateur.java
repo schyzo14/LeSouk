@@ -1,8 +1,10 @@
 package com.miage.lesouk.entite;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.miage.lesouk.interfacepublic.ParticipantPublic;
 import com.miage.lesouk.interfacepublic.UtilisateurPublic;
+import com.miage.lesouk.interfacepublic.VueUtilisateur;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.ElementCollection;
@@ -20,29 +22,39 @@ public class Utilisateur implements ParticipantPublic, UtilisateurPublic {
     // Id de l'utilisateur autogénéré
     @Id
     @GeneratedValue
+    @JsonView(VueUtilisateur.Simple.class)
     private Integer id;
+    @JsonView(VueUtilisateur.Simple.class)
     private Integer id2;
     // Nom de l'utilisateur
+    @JsonView(VueUtilisateur.Complet.class)
     private String nom;
     // Prénom de l'utilisateur
+    @JsonView(VueUtilisateur.Complet.class)
     private String prenom;
     // Mail de l'utilisateur
+    @JsonView(VueUtilisateur.Complet.class)
     private String mail;
     // Pseudo de l'utilisateur
+    @JsonView(VueUtilisateur.Simple.class)
     private String pseudo;
     // Mot de passe de l'utilisateur
     private String mdp;
     // Ville
+    @JsonView(VueUtilisateur.Simple.class)
     private String city;
     // Pays
+    @JsonView(VueUtilisateur.Simple.class)
     private String country;
     // Liste Annonces Crées
     @OneToMany(targetEntity=Annonce.class, mappedBy="createur")
     @JsonIgnoreProperties({"createur", "candidat"})
+    @JsonView(VueUtilisateur.Simple.class)
     private List<Annonce> annoncesCreees;
     // Liste Annonces Candidatées
     @OneToMany(targetEntity=Annonce.class, mappedBy="candidat")
     @JsonIgnoreProperties({"createur", "candidat"})
+    @JsonView(VueUtilisateur.Simple.class)
     private List<Annonce> annoncesCandidatees;
 
         @ElementCollection

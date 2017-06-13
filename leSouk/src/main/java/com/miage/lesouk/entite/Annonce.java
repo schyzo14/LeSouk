@@ -2,6 +2,8 @@ package com.miage.lesouk.entite;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.miage.lesouk.interfacepublic.VueUtilisateur;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,47 +28,58 @@ public class Annonce implements Serializable, Comparable<Annonce> {
     /** id Annonce */
     @Id
     @GeneratedValue
+    @JsonView(VueUtilisateur.Simple.class)
     private Integer idA; //auto-généré
     
     /** titre Annonce */
+    @JsonView(VueUtilisateur.Simple.class)
     private String nomA;
     
     /** description Annonce */
+    @JsonView(VueUtilisateur.Simple.class)
     private String descriptionA;
     
     /** prix Annonce */
+    @JsonView(VueUtilisateur.Simple.class)
     private Double prixA;
     
     /** date creation Annonce */
     @JsonFormat(pattern="dd-MM-yyyy")
     @Temporal(javax.persistence.TemporalType.DATE)
+    @JsonView(VueUtilisateur.Simple.class)
     private Date dateCreaA;
     
     /** etat Annonce */
+    @JsonView(VueUtilisateur.Simple.class)
     private String etatA; //à améliorer avec une enum
     
     /** createur */
     @ManyToOne
     @JoinColumn(name="id")
     @JsonIgnoreProperties({"annoncesCandidatees", "annoncesCreees"})
+    @JsonView(VueUtilisateur.Simple.class)
     private Utilisateur createur;
     
     /** candidat */
     @ManyToOne
     @JoinColumn(name="id2")
     @JsonIgnoreProperties({"annoncesCandidatees", "annoncesCreees"})
+    @JsonView(VueUtilisateur.Simple.class)
     private Utilisateur candidat;
     
     /** prix Candidat */
+    @JsonView(VueUtilisateur.Simple.class)
     private Double prixCandidat;
     
     /** date creation Annonce */
     @JsonFormat(pattern="dd-MM-yyyy")
     @Temporal(javax.persistence.TemporalType.DATE)
+    @JsonView(VueUtilisateur.Simple.class)
     private Date dateCandidat;
     
     /** commentaires */
     @Transient
+    @JsonView(VueUtilisateur.Simple.class)
     private List<Commentaire> listeCommentaires = new ArrayList<Commentaire>();
 
     /**
